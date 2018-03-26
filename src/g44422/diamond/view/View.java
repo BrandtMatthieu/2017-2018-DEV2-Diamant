@@ -3,7 +3,7 @@ package g44422.diamond.view;
 import java.util.Scanner;
 import java.util.Arrays;
 
-import g44422.diamond.model;
+import g44422.diamond.*;
 
 public class View {
     
