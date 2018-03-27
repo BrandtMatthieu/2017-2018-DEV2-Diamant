@@ -3,7 +3,7 @@ package g44422.diamond.model;
 import java.util.*;
 
 /**
- * Représente un explorzteur
+ * ReprÃ©sente un explorzteur
  *
  * @author g44422
  */

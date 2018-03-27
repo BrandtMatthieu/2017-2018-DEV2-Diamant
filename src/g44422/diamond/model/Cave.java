@@ -14,6 +14,7 @@ public class Cave {
     }
 
     public Cave() {
+        /* TODO */
     }
 
     public void discoveredNewTreasure(List<Explorer> explorers) {

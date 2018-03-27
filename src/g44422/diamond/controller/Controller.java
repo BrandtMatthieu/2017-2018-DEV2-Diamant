@@ -8,6 +8,8 @@ public class Controller {
     }
     
     void startGame() {
+        /* TODO */
+        new Controller();
         int i=0;
         for(;i<3;i++) { // minimum 3 joueurs
             askExplorer();
@@ -17,7 +19,7 @@ public class Controller {
         }
         
         while(!isOver()) {
-            
+            /* TODO */
         }
         
         displayEnd();
