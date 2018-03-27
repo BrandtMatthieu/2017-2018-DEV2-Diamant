@@ -4,8 +4,8 @@ import java.util.*;
 
 /**
  * Représente un explorzteur
- *
  * @author g44422
+ * @version 0.1
  */
 public class Explorer {
 
@@ -14,8 +14,7 @@ public class Explorer {
     private State state;
 
     /**
-     * Crée un nouvel explorateur
-     *
+     * Crée un nouvel explorateur.
      * @param pseudonym Le pseudonyme sous lequel le joueur se fait appeler
      */
     public Explorer(String pseudonym) {
@@ -24,23 +23,42 @@ public class Explorer {
         this.state = State.EXPLORING;
     }
 
-    public String getPseudonym() {
+	/**
+	 * Accède au nom de l'explorateur.
+	 * @return le nom de l'explorateur
+	 */
+	public String getPseudonym() {
         return pseudonym;
     }
 
-    public Bag getBag() {
+	/**
+	 * Retourne le nombre de rubis dans le sac de l'explorateur
+	 * @return le nombre de rubis de l'explorateur
+	 */
+	public Bag getBag() {
         return bag;
     }
 
-    public State getState() {
+	/**
+	 * Retourne l'état de l'explrateur dans la grotte.
+	 * @return l'état de l'explorateur
+	 */
+	public State getState() {
         return state;
     }
 
-    public void addToBag(int nbRubies) {
+	/**
+	 * Ajoute le nombre de rubis spécifié au sac de l'explorateur.
+	 * @param nbRubies Nombre de rubis à ajouter au sac
+	 */
+	public void addToBag(int nbRubies) {
         this.bag.addRubies(nbRubies);
     }
 
-    public void takeDecisionToLeave() {
+	/**
+	 * Fais quitter l'explorteur de la grotte.
+	 */
+	public void takeDecisionToLeave() {
         this.state = State.LEAVING;
     }
 }
