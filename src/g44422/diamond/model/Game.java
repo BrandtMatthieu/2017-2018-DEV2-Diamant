@@ -44,7 +44,8 @@ public class Game implements Model {
         List <Explorer> exploringExplorers;
         for(int i=0;i<explorers.size();i++) {
             if(explorer.get(i).state==EXPLORING) {
-            exploringExplorers.add(explorers.get(i))}
+                exploringExplorers.add(explorers.get(i))
+            }
         }
         return exploringExplorers;
     }

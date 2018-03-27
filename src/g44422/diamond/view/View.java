@@ -10,6 +10,7 @@ public class View {
     Scanner in = new Scanner(System.in);
     
     public View(Model game) {
+        /* TODO */
         this.in;
         this.game = new Game();
     }
@@ -18,7 +19,7 @@ public class View {
         String answer = "";
         System.out.println("Entrez un pseudonyme pour cet exploratreur:");
         while(in.nextLine().equalsIgnoreCase("")) {
-            System.out.println("Le pseudonyme ne peut pas être vide");
+            System.out.println("Le pseudonyme ne peut pas ï¿½tre vide");
             answer = in.nextLine();
         }
         return new Explorer(answer);
@@ -39,7 +40,7 @@ public class View {
                     case "n":
                         return false;
                     default:
-                        System.out.println("Réponse non valide. Entrez une des proposition suivantes : [ OUI / NON ]");
+                        System.out.println("Rï¿½ponse non valide. Entrez une des proposition suivantes : [ OUI / NON ]");
                 }
             }
         }
@@ -62,7 +63,7 @@ public class View {
                     case "n":
                         return false;
                     default:
-                        System.out.println("Réponse non valide. Entrez une des proposition suivantes : [ OUI / NON ]");
+                        System.out.println("Rï¿½ponse non valide. Entrez une des proposition suivantes : [ OUI / NON ]");
                 }
             }
         }
