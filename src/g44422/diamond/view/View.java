@@ -12,7 +12,7 @@ import g44422.diamond.model.*;
  */
 public class View {
     
-    Scanner in = new Scanner(System.in);
+    Scanner in;
 
 	/**
 	 * Crée un nouvelle vue avec unbe partie.
@@ -20,7 +20,7 @@ public class View {
 	 */
 	public View(Model game) {
         /* TODO */
-        this.in;
+        this.in = new Scanner(System.in);;
         this.game = new Game();
     }
 
@@ -32,7 +32,7 @@ public class View {
         String answer = "";
         System.out.println("Entrez un pseudonyme pour cet exploratreur:");
         while(in.nextLine().equalsIgnoreCase("")) {
-            System.out.println("Le pseudonyme ne peut pas �tre vide");
+            System.out.println("Le pseudonyme ne peut pas être vide");
             answer = in.nextLine();
         }
         return new Explorer(answer);

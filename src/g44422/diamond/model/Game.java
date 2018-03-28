@@ -33,11 +33,13 @@ public class Game implements Model {
 	 */
 	public void moveForward() {
         /* TODO */
+        /*
         for (int i = 0; i < explorers.size(); i++) {
-            if (explorers.get(i).getState() == EXPLORING) {
-                explorers.get(i).
-            }
-        }
+		if (explorers.get(i).getState() == EXPLORING) {
+			e
+		}
+        } */
+
     }
 
 	/**
@@ -45,8 +47,7 @@ public class Game implements Model {
 	 * @return l'état de la partie
 	 */
 	public boolean isOver() {
-        /* TODO */
-        return false;
+        return !(getExploringExplorers().size()>0);
     }
 
 	/**
@@ -54,8 +55,7 @@ public class Game implements Model {
 	 * @return le noméro de la grotte actuelle
 	 */
 	public Cave getCave() {
-        /* TODO */
-        return
+        return cave;
     }
 
 	/**
@@ -63,8 +63,6 @@ public class Game implements Model {
 	 * @return les explorteurs inscrit dans la partie
 	 */
 	public List<Explorer> getExplorers() {
-        /* TODO */
-		List <explorer> explorers;
         return explorers;
     }
 
@@ -76,8 +74,7 @@ public class Game implements Model {
         List <Explorer> exploringExplorers = getExplorers();
         for(int i=0;i<exploringExplorers.size();i++) {
             if(explorer.get(i).state==EXPLORING) {
-            	/* TODO */
-                exploringExplorers.add(explorers.get(i))
+                exploringExplorers.add(explorers.get(i));
             }
         }
         return exploringExplorers;

@@ -27,7 +27,7 @@ public class Cave {
 	 * Crée un nouvelle grotte
 	 */
 	public Cave() {
-        /* TODO */
+        lastDiscoveredTreasure = new Treasure();
     }
 
 	/**
