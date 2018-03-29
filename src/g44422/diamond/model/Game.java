@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static g44422.diamond.model.State.*;
-
-import g44422.diamond.view.View;
+import g44422.diamond.*;
 
 /**
  * Creates a game.
@@ -85,9 +84,7 @@ public class Game implements Model {
 	 */
 	public void handleExplorerDecisionToLeave(Explorer explorer) {
         if(getExploringExplorers().contains(explorer)) {
-        	if(askExplorerChoiceToContinue(explorer)) { /* TODO */
-            	explorer.takeDecisionToLeave();
-			}
+        	explorer.takeDecisionToLeave();
         } else {
             throw new RuntimeException();
         }
