@@ -27,7 +27,7 @@ public class Controller {
 	 * Begins the game.
 	 */
     public void startGame() {
-        new Controller(new Game(), new View(new Game()));
+
         int i=0;
         for(;i<3;i++) { // minimum 3 joueurs
             game.addExplorer(view.askExplorer());

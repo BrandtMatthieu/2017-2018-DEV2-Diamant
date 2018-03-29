@@ -1,4 +1,3 @@
-
 package g44422.diamond.model;
 
 import java.util.List;

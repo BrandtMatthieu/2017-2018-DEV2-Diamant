@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static g44422.diamond.model.State.*;
-import g44422.diamond.*;
 
 /**
  * Creates a game.
@@ -21,7 +20,7 @@ public class Game implements Model {
 	 */
 	public Game() {
         this.explorers = new ArrayList<Explorer>();;
-        this.cave = null;
+        this.cave = new Cave();
     }
 
 	/**
