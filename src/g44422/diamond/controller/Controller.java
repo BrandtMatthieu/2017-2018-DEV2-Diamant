@@ -10,7 +10,11 @@ import g44422.diamond.view.*;
  * @version 0.1
  */
 public class Controller {
-	/**
+
+    Model game;
+    View view;
+
+    /**
 	 * Crée un nouveau contrôleur pour la partie
 	 * @param game La partie en cours
 	 * @param view La vue actuelle

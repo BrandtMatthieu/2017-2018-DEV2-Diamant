@@ -11,7 +11,7 @@ import g44422.diamond.model.*;
  * @version 0.1
  */
 public class View {
-    
+    Game game;
     Scanner in;
 
 	/**
@@ -19,7 +19,6 @@ public class View {
 	 * @param game nouvelle partie
 	 */
 	public View(Model game) {
-        /* TODO */
         this.in = new Scanner(System.in);;
         this.game = new Game();
     }
@@ -71,7 +70,7 @@ public class View {
 	public boolean askExplorerChoiceToContinue(Explorer explorer) {
         String expectedResults[] = {"oui", "o", "non", "n"};
         
-        System.out.println(explorer.getPseudonym+", voulez-vous quitter la grotte? [ OUI / NON ]");
+        System.out.println(explorer.getPseudonym()+", voulez-vous quitter la grotte? [ OUI / NON ]");
         ask:
         while(true) {
             String answer = in.nextLine();
@@ -104,9 +103,11 @@ public class View {
 	 */
 	public void displayEnd() {
         System.out.println("Fin du jeu:\n===========\nClassement:");
+        /*
         for(int i=0;i<explorers.size();i++) {
-        	/* TODO */
+        	TODO
             System.out.println(explorers.get(i).getPseudonym()+"\t\t"+explorers.get(i).getBag.nbRubies);
         }
+        */
     }
 }

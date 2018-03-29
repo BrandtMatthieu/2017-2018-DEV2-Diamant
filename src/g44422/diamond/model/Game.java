@@ -2,6 +2,8 @@ package g44422.diamond.model;
 
 import java.util.List;
 
+import static g44422.diamond.model.State.EXPLORING;
+
 /**
  * Créé une partie
  * @author 44422
@@ -73,7 +75,7 @@ public class Game implements Model {
 	public List<Explorer> getExploringExplorers() {
         List <Explorer> exploringExplorers = getExplorers();
         for(int i=0;i<exploringExplorers.size();i++) {
-            if(explorer.get(i).state==EXPLORING) {
+            if(explorers.get(i).getState() ==EXPLORING) {
                 exploringExplorers.add(explorers.get(i));
             }
         }

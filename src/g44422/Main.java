@@ -1,4 +1,3 @@
-
 /**
  * Méthode principale qui lance le jeu
  * @author 44422
