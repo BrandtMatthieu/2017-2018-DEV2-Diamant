@@ -34,7 +34,8 @@ public class Cave {
 	 * Tells the explorers the last treasure they just dicorvered.
 	 * @param explorers The explorers who discover the treasure.
 	 */
-    public void discovereNewTreasure(List<Explorer> explorers) {
+    public void discoverNewTreasure(List<Explorer> explorers) {
+    	lastDiscoveredTreasure = new Treasure();
 		getLastDiscoveredTreasure().explore(explorers);
     }
 }

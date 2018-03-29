@@ -52,9 +52,11 @@ public class Treasure {
 	 * @param explorers All the explorers who wanna explore the tile.
 	 */
 	public void explore(List<Explorer> explorers) {
+		if(explorers.size()>0) {
         for (Explorer explorer : explorers) {
             explorer.addToBag(this.rubies / explorers.size());
         }
         this.rubies = this.rubies % explorers.size();
+		}
     }
 }

@@ -1,8 +1,11 @@
 package g44422.diamond.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static g44422.diamond.model.State.EXPLORING;
+import static g44422.diamond.model.State.*;
+
+import g44422.diamond.view.View;
 
 /**
  * Creates a game.
@@ -18,7 +21,7 @@ public class Game implements Model {
 	 * Creates a new game.
 	 */
 	public Game() {
-        this.explorers = null;
+        this.explorers = new ArrayList<Explorer>();;
         this.cave = null;
     }
 
@@ -34,14 +37,7 @@ public class Game implements Model {
 	 * Makes the explorer go forward in the cave.
 	 */
 	public void moveForward() {
-        /* TODO */
-        /*
-        for (int i = 0; i < explorers.size(); i++) {
-		if (explorers.get(i).getState() == EXPLORING) {
-			e
-		}
-        } */
-
+		getCave().discoverNewTreasure(getExploringExplorers());
     }
 
 	/**
@@ -73,10 +69,10 @@ public class Game implements Model {
 	 * @return All the exploring explorers.
 	 */
 	public List<Explorer> getExploringExplorers() {
-        List <Explorer> exploringExplorers = getExplorers();
-        for(int i=0;i<exploringExplorers.size();i++) {
-            if(explorers.get(i).getState() ==EXPLORING) {
-                exploringExplorers.add(explorers.get(i));
+        List <Explorer> exploringExplorers = new ArrayList<Explorer>();
+        for(int i=0;i<getExplorers().size();i++) {
+            if(getExplorers().get(i).getState().equals(EXPLORING)) {
+                exploringExplorers.add(getExplorers().get(i));
             }
         }
         return exploringExplorers;
@@ -88,12 +84,12 @@ public class Game implements Model {
 	 * @throws RuntimeException Exception throwed if the explorer isn't in the list with the exploring explorers.
 	 */
 	public void handleExplorerDecisionToLeave(Explorer explorer) {
-        if(!getExplorers().contains(explorer)) {
-            explorer.takeDecisionToLeave();
+        if(getExploringExplorers().contains(explorer)) {
+        	if(askExplorerChoiceToContinue(explorer)) { /* TODO */
+            	explorer.takeDecisionToLeave();
+			}
         } else {
             throw new RuntimeException();
         }
-        
     }
-
 }

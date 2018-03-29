@@ -9,7 +9,7 @@ public class ExplorerTest {
     @Test
     public void getPseudonyme() {
         Explorer explorer = new Explorer("Sdr");
-        assertEquals("Sdr", explorer.getPseudonyme());
+        assertEquals("Sdr", explorer.getPseudonym());
     }
 
     @Test

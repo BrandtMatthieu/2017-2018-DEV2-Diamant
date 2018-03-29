@@ -62,4 +62,16 @@ public class Explorer {
         this.state = State.LEAVING;
     }
 
+	/**
+	 * Says if two explorers are the same.
+	 * @param explorer2 Another explorer to compate to.
+	 * @return The result of the comparaison.
+	 */
+	public boolean equals(Explorer explorer2) {
+		if(explorer2!=null) {
+			return(this.getPseudonym().equals(explorer2.getPseudonym()));
+		} else {
+			return false;
+		}
+	}
 }

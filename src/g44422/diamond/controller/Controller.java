@@ -27,14 +27,13 @@ public class Controller {
 	 * Begins the game.
 	 */
     public void startGame() {
-        /* TODO */
         new Controller(new Game(), new View(new Game()));
         int i=0;
         for(;i<3;i++) { // minimum 3 joueurs
-            view.askExplorer();
+            game.addExplorer(view.askExplorer());
         }
         while(view.isThereNewExplorerToAdd() && i<8) {
-            view.askExplorer();
+			game.addExplorer(view.askExplorer());
         }
         while(!game.isOver()) {
             /* TODO */

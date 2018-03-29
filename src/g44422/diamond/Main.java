@@ -1,5 +1,6 @@
 package g44422.diamond;
 
+import g44422.diamond.*;
 import g44422.diamond.controller.Controller;
 
 /**
@@ -7,7 +8,7 @@ import g44422.diamond.controller.Controller;
  * @author 44422
  */
 public class Main {
-    public void main(String args[]) {
-        /* TODO */
+    public static void main(String args[]) {
+		/* Controller.startGame(); */
     }
 }

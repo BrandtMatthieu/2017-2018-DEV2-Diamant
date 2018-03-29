@@ -96,21 +96,18 @@ public class View {
 	 */
 	public void displayGame() {
 		/*
+		TODO
 		System.out.println(getLastDiscoveredTreasure());
 		*/
-        /* TODO */
     }
 
 	/**
-	 * Displays an end-message when the game is done,a nd also theach explorer's score.
+	 * Displays an end-message when the game is done, and also shows for each explorer it's score.
 	 */
 	public void displayEnd() {
         System.out.println("Fin du jeu:\n===========\nClassement:");
-        /*
-        for(int i=0;i<explorers.size();i++) {
-        	TODO
-            System.out.println(explorers.get(i).getPseudonym()+"\t\t"+explorers.get(i).getBag.nbRubies);
+        for(int i=0;i<game.getExplorers().size();i++) {
+            System.out.println(game.getExplorers().get(i).getPseudonym()+"\t\t"+game.getExplorers().get(i).getBag().getNbRubies());
         }
-        */
     }
 }
