@@ -3,10 +3,11 @@ package g44422.diamond.view;
 import java.util.Scanner;
 import java.util.Arrays;
 
+import g44422.diamond.controller.Controller;
 import g44422.diamond.model.*;
 
 /**
- * Cas généraux d'une vue
+ * General cases of a view.
  * @author 44422
  * @version 0.1
  */
@@ -15,8 +16,8 @@ public class View {
     Scanner in;
 
 	/**
-	 * Crée un nouvelle vue avec unbe partie.
-	 * @param game nouvelle partie
+	 * Creates a new view with a new game.
+	 * @param game The newly generated game.
 	 */
 	public View(Model game) {
         this.in = new Scanner(System.in);;
@@ -24,8 +25,8 @@ public class View {
     }
 
 	/**
-	 * Crée un nouvel explorateur et lui demande son pseudo.
-	 * @return l'explorateur nouvellement créé
+	 * Creates an new explorer and ask him his nick.
+ * @return A newly created explorer.
 	 */
 	public Explorer askExplorer() {
         String answer = "";
@@ -38,34 +39,34 @@ public class View {
     }
 
 	/**
-	 * Demande si il doit encore y avoir de nouveaux explorateurs et analyse la réponse.
-	 * @return si il y a de nouveaux explorateurs ou non
+	 * Asks if there are other explorers to add to the game.
+	 * @return If there are new explorers to add or not.
 	 */
 	public boolean isThereNewExplorerToAdd() {
         System.out.println("Voulez-vous ajouter un nouvel utilisateur? [ OUI / NON ]");
         String expectedResults[] = {"oui", "o", "non", "n"};
-        ask:
-        while(true) {
-            String answer = in.nextLine();
-            if(Arrays.asList(expectedResults).contains(answer.toLowerCase())) {
-                switch(answer) {
-                    case "oui":
-                    case "o":
-                        return true;
-                    case "non":
-                    case "n":
-                        return false;
-                    default:
-                        System.out.println("R�ponse non valide. Entrez une des proposition suivantes : [ OUI / NON ]");
-                }
-            }
-        }
+		ask:
+		while(true) {
+			String answer = in.nextLine();
+			if(Arrays.asList(expectedResults).contains(answer.toLowerCase())) {
+				switch(answer) {
+					case "oui":
+					case "o":
+						return true;
+					case "non":
+					case "n":
+						return false;
+					default:
+						System.out.println("Réponse non valide. Entrez une des proposition suivantes : [ OUI / NON ]");
+				}
+			}
+		}
     }
 
 	/**
-	 * Demande à l'explorateur si il souhaite continuer à explorer la grotte.
-	 * @param explorer l'explorateur à qui est posé la question
-	 * @return la réponse de l'exp^lorateur (oui ou non)
+	 * Asks the explorer if he wishes to go deeper into the cave.
+	 * @param explorer The explorer that is asked.
+	 * @return The explorer's answer.
 	 */
 	public boolean askExplorerChoiceToContinue(Explorer explorer) {
         String expectedResults[] = {"oui", "o", "non", "n"};
@@ -91,15 +92,17 @@ public class View {
     }
 
 	/**
-	 * Affiche la ddernière tuile découverte par les explorateurs
+	 * Displays the last tile discovered by the explorers.
 	 */
 	public void displayGame() {
-		System.out.println();
+		/*
+		System.out.println(getLastDiscoveredTreasure());
+		*/
         /* TODO */
     }
 
 	/**
-	 * Affiche un message de fin car le jeu est fini, ainsi que le score de chaque explorateur
+	 * Displays an end-message when the game is done,a nd also theach explorer's score.
 	 */
 	public void displayEnd() {
         System.out.println("Fin du jeu:\n===========\nClassement:");

@@ -1,11 +1,10 @@
-
 package g44422.diamond.controller;
 
 import g44422.diamond.model.*;
 import g44422.diamond.view.*;
 
 /**
- * Classe controlant différents paramètres du jeu.
+ * Class containing the differents main methods of the game.
  * @author 44422
  * @version 0.1
  */
@@ -15,9 +14,9 @@ public class Controller {
     View view;
 
     /**
-	 * Crée un nouveau contrôleur pour la partie
-	 * @param game La partie en cours
-	 * @param view La vue actuelle
+	 * Creates a new controller for the game.
+	 * @param game The current game.
+	 * @param view The actual view.
 	 */
     public Controller(Model game, View view) {
         this.game = game;
@@ -25,23 +24,21 @@ public class Controller {
     }
 
     /**
-	 * Commence la partie
+	 * Begins the game.
 	 */
-    void startGame() {
+    public void startGame() {
         /* TODO */
-        new Controller(new Game(), new View(new Model()));
+        new Controller(new Game(), new View(new Game()));
         int i=0;
         for(;i<3;i++) { // minimum 3 joueurs
-            askExplorer();
+            view.askExplorer();
         }
-        while(isThereNewExplorerToAdd && i<8) {
-            askExplorer();
+        while(view.isThereNewExplorerToAdd() && i<8) {
+            view.askExplorer();
         }
-        
-        while(!isOver()) {
+        while(!game.isOver()) {
             /* TODO */
         }
-        
-        displayEnd();
+        view.displayEnd();
     }
 }

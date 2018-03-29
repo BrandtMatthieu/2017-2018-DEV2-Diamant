@@ -5,7 +5,7 @@ import java.util.List;
 import static g44422.diamond.model.State.EXPLORING;
 
 /**
- * Créé une partie
+ * Creates a game.
  * @author 44422
  * @version 0.1
  */
@@ -15,7 +15,7 @@ public class Game implements Model {
     public Cave cave;
 
 	/**
-	 * Crée une nouvelle partie
+	 * Creates a new game.
 	 */
 	public Game() {
         this.explorers = null;
@@ -23,15 +23,15 @@ public class Game implements Model {
     }
 
 	/**
-	 * Ajoute un explorateur à la partie en cours.
-	 * @param explorer l'explorateur à ajouter
+	 * Adds a new explorer to the current game.
+	 * @param explorer The explorer to add to the game.
 	 */
 	public void addExplorer(Explorer explorer) {
         explorers.add(explorer);
     }
 
 	/**
-	 * Fais avancer l'explorateur à la case suivante
+	 * Makes the explorer go forward in the cave.
 	 */
 	public void moveForward() {
         /* TODO */
@@ -45,32 +45,32 @@ public class Game implements Model {
     }
 
 	/**
-	 * Détermine si la partie est finie ou non.
-	 * @return l'état de la partie
+	 * Says if the game is finished or not.
+	 * @return The game's state.
 	 */
 	public boolean isOver() {
         return !(getExploringExplorers().size()>0);
     }
 
 	/**
-	 * Retourne le numéro de la grotte dans laquelle sont les explorateurs.
-	 * @return le noméro de la grotte actuelle
+	 * Returns the cave's number the explorers are in.
+	 * @return The actual cave's number.
 	 */
 	public Cave getCave() {
         return cave;
     }
 
 	/**
-	 * Etablit la liste des explorateurs de la partie.
-	 * @return les explorteurs inscrit dans la partie
+	 * Makes a list of all the explorers.
+	 * @return A list with all the explorers.
 	 */
 	public List<Explorer> getExplorers() {
         return explorers;
     }
 
 	/**
-	 * Etablit la liste des explorateurs qui sont actuellement en exploration.
-	 * @return les explorateurs qui explorent
+	 * Makes a list of all explorers curerntly exploring.
+	 * @return All the exploring explorers.
 	 */
 	public List<Explorer> getExploringExplorers() {
         List <Explorer> exploringExplorers = getExplorers();
@@ -83,9 +83,9 @@ public class Game implements Model {
     }
 
 	/**
-	 * Fait quitter la grotte à l'explorateur qui le souhaite.
-	 * @param explorer l'explorateur souhaitant quitter la grotte
-	 * @throws RuntimeException si l'explorateur n'est pas dans la partie
+	 * Makes the wishing explorers leave the cave.
+	 * @param explorer The explorer who want to leave the cave.
+	 * @throws RuntimeException Exception throwed if the explorer isn't in the list with the exploring explorers.
 	 */
 	public void handleExplorerDecisionToLeave(Explorer explorer) {
         if(!getExplorers().contains(explorer)) {

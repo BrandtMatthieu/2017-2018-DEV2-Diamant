@@ -3,7 +3,7 @@ package g44422.diamond.model;
 import java.util.List;
 
 /**
- * Cas généraux d'une carte trésor
+ * General cases of a treasure tile.
  * @author 44422
  * @version 0.1
  */
@@ -12,8 +12,8 @@ public class Treasure {
     private int rubies;
 
 	/**
-	 * Renvoit le nombre de rubis présents sur la tuile trésor.
-	 * @return le nombre de rubis de la tuile trésor
+	 * Returns the amount of rubbies standing on the treasure tile.
+	 * @return The amount of rubbies on the tile.
 	 */
 	public int getRubies() {
         return this.rubies;
@@ -22,16 +22,16 @@ public class Treasure {
     private final int initNbRubies;
 
 	/**
-	 * Renvoit le nombre originel de rubis présents sur la tuile trésor.
-	 * @return le nombre de rubis restant sur la tuile
+	 * Renvoit The amount of rubbies on the tile when it has been created.
+	 * @return The amount of rubbies that stood on the tile when it was created.
 	 */
     public int getInitNbRubies() {
         return this.initNbRubies;
     }
 
 	/**
-	 * Crée une nouvelle tuile trésor avec un nombre de rubis définis.
-	 * @param rubies le nombre de rubis défini
+	 * Creates a new treasure tile with a defined number.
+	 * @param rubies The number of rubbies on the newly-genereated tile.
 	 */
 	public Treasure(int rubies) {
         this.rubies = rubies;
@@ -48,8 +48,8 @@ public class Treasure {
     }
 
 	/**
-	 * Fais explorer les explorateurs donnés la tuile.
-	 * @param explorers les explorateurs devant explorer la tuile
+	 * Makes the explorers explore the tile and share the rubbies.
+	 * @param explorers All the explorers who wanna explore the tile.
 	 */
 	public void explore(List<Explorer> explorers) {
         for (Explorer explorer : explorers) {

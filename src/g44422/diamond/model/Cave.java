@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Collection;
 
 /**
- * Définit une grotte
+ * Defines a cave
  * @author 44422
  * @version 0.1
  */
@@ -16,25 +16,25 @@ public class Cave {
     Treasure lastDiscoveredTreasure;
 
 	/**
-	 * Retourne le dernier trésor découvert par le joueur.
-	 * @return le dernier trésor découvert.
+	 * Returns the last treasure discovered by the explorers.
+	 * @return the last discovered treasure.
 	 */
     public Treasure getLastDiscoveredTreasure() {
         return lastDiscoveredTreasure;
     }
 
 	/**
-	 * Crée un nouvelle grotte
+	 * Creates a new cave.
 	 */
 	public Cave() {
         lastDiscoveredTreasure = new Treasure();
     }
 
 	/**
-	 * Indique aux explorateurs la dernière tuile qu'ils viennent de découvrir.
-	 * @param explorers Les explorateurs qui découvrent la tuile.
+	 * Tells the explorers the last treasure they just dicorvered.
+	 * @param explorers The explorers who discover the treasure.
 	 */
-    public void discoveredNewTreasure(List<Explorer> explorers) {
+    public void discovereNewTreasure(List<Explorer> explorers) {
 		getLastDiscoveredTreasure().explore(explorers);
     }
 }

@@ -2,7 +2,7 @@
 package g44422.diamond.model;
 
 /**
- * Représent un sac pour chaque explorateur
+ * Represents a bag for each explorer.
  * @author 44422
  * @version 0.1
  */
@@ -11,25 +11,25 @@ public class Bag {
     private int nbRubies;
 
 	/**
-	 * Crée un nouveau sac pour le joueur.
+	 * Creates a new bag for the player.
 	 */
     public Bag() {
-        this.nbRubies = 0;
+    	this.nbRubies = 0;
     }
 
 	/**
-	 * Ajoute le nombre de rubis spécifié au sac du joueur.
-	 * @param nbRubies Nombre de rubis à ajouter
+	 * Adds the specifies amound of rubbies to a player's bag.
+	 * @param nbRubies The amount of rubbies to add.
 	 */
     public void addRubies(int nbRubies) {
-        this.nbRubies = this.nbRubies + nbRubies;
+    	this.nbRubies = this.nbRubies + nbRubies;
     }
 
 	/**
-	 * Renvoit le nombre de rubis que possède le joueur.
-	 * @return Le nombre de rubis possédé par le joueur
+	 * Returns the amount of rubbies in the explorer's bag.
+	 * @return The amound of rubbies the explorer have.
 	 */
-    public int getNbRubbies() {
-        return this.nbRubies;
+    public int getNbRubies() {
+    	return this.nbRubies;
     }
 }
