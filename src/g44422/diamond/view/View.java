@@ -12,7 +12,7 @@ import g44422.diamond.model.*;
  * @version 0.1
  */
 public class View {
-    Game game;
+    Model game;
     Scanner in;
 
 	/**
@@ -21,7 +21,7 @@ public class View {
 	 */
 	public View(Model game) {
         this.in = new Scanner(System.in);;
-        this.game = new Game();
+        this.game = game;
     }
 
 	/**
@@ -30,7 +30,7 @@ public class View {
 	 */
 	public Explorer askExplorer() {
         String answer = "";
-        System.out.println("Entrez un pseudonyme pour cet exploratreur:");
+        System.out.println("Entrez un pseudonyme pour cet explorateur:");
         while(in.nextLine().equalsIgnoreCase("")) {
             System.out.println("Le pseudonyme ne peut pas être vide");
             answer = in.nextLine();
@@ -95,19 +95,19 @@ public class View {
 	 * Displays the last tile discovered by the explorers.
 	 */
 	public void displayGame() {
-		/*
-		TODO
-		System.out.println(getLastDiscoveredTreasure());
-		*/
+		/* ToDo */
     }
 
 	/**
 	 * Displays an end-message when the game is done, and also shows for each explorer it's score.
 	 */
 	public void displayEnd() {
-        System.out.println("Fin du jeu:\n===========\nClassement:");
+        System.out.println("Fin du jeu.");
+        System.out.println("Classement:");
+        System.out.println("===========");
+		System.out.println("Explorateur | Rubis");
         for(int i=0;i<game.getExplorers().size();i++) {
-            System.out.println(game.getExplorers().get(i).getPseudonym()+"\t\t"+game.getExplorers().get(i).getBag().getNbRubies());
+            System.out.println(game.getExplorers().get(i).getPseudonym()+"\t\t\t"+game.getExplorers().get(i).getBag().getNbRubies());
         }
     }
 }

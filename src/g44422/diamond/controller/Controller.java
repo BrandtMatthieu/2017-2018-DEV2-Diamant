@@ -27,16 +27,19 @@ public class Controller {
 	 * Begins the game.
 	 */
     public void startGame() {
-
-        int i=0;
+    	int i=0;
         for(;i<3;i++) { // minimum 3 joueurs
             game.addExplorer(view.askExplorer());
         }
-        while(view.isThereNewExplorerToAdd() && i<8) {
+        while(view.isThereNewExplorerToAdd() && i<=7) {
 			game.addExplorer(view.askExplorer());
+			i++;
         }
         while(!game.isOver()) {
-            /* TODO */
+            game.moveForward();
+			for(int j = 0;j<game.getExplorers().size();j++) {
+				game.handleExplorerDecisionToLeave(game.getExplorers().get(j));
+			}
         }
         view.displayEnd();
     }
