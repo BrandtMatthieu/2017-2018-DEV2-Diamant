@@ -12,8 +12,8 @@ public class Treasure {
     private int rubies;
 
 	/**
-	 * Returns the amount of rubbies standing on the treasure tile.
-	 * @return The amount of rubbies on the tile.
+	 * Returns the amount of rubies standing on the treasure tile.
+	 * @return The amount of rubies on the tile.
 	 */
 	public int getRubies() {
         return this.rubies;
@@ -22,8 +22,8 @@ public class Treasure {
     private final int initNbRubies;
 
 	/**
-	 * Renvoit The amount of rubbies on the tile when it has been created.
-	 * @return The amount of rubbies that stood on the tile when it was created.
+	 * Renvoit The amount of rubies on the tile when it has been created.
+	 * @return The amount of rubies that stood on the tile when it was created.
 	 */
     public int getInitNbRubies() {
         return this.initNbRubies;
@@ -31,7 +31,7 @@ public class Treasure {
 
 	/**
 	 * Creates a new treasure tile with a defined number.
-	 * @param rubies The number of rubbies on the newly-genereated tile.
+	 * @param rubies The number of rubies on the newly-genereated tile.
 	 */
 	public Treasure(int rubies) {
         this.rubies = rubies;
@@ -39,7 +39,7 @@ public class Treasure {
     }
 
 	/**
-	 * Crée une tuile trésor avec un nombre de rubis aléatoir entre 1 et 15.
+	 * Creates a treasure tile with a random amount of rubies, between 1 and 15.
 	 */
 	public Treasure() {
         int random = (int) Math.round((Math.random() * 14) + 1);
@@ -48,7 +48,7 @@ public class Treasure {
     }
 
 	/**
-	 * Makes the explorers explore the tile and share the rubbies.
+	 * Makes the explorers explore the tile and share the rubies.
 	 * @param explorers All the explorers who wanna explore the tile.
 	 */
 	public void explore(List<Explorer> explorers) {

@@ -19,7 +19,7 @@ public class Game implements Model {
 	 * Creates a new game.
 	 */
 	public Game() {
-        this.explorers = new ArrayList<Explorer>();;
+        this.explorers = new ArrayList<>();
         this.cave = new Cave();
     }
 
@@ -28,7 +28,7 @@ public class Game implements Model {
 	 * @param explorer The explorer to add to the game.
 	 */
 	public void addExplorer(Explorer explorer) {
-        explorers.add(explorer);
+		this.explorers.add(explorer);
     }
 
 	/**
@@ -59,7 +59,7 @@ public class Game implements Model {
 	 * @return A list with all the explorers.
 	 */
 	public List<Explorer> getExplorers() {
-        return explorers;
+        return this.explorers;
     }
 
 	/**

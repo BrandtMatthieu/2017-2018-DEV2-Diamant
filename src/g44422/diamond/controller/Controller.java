@@ -37,6 +37,7 @@ public class Controller {
         }
         while(!game.isOver()) {
             game.moveForward();
+            view.displayGame();
 			for(int j = 0;j<game.getExplorers().size();j++) {
 				game.handleExplorerDecisionToLeave(game.getExplorers().get(j));
 			}

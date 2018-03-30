@@ -1,7 +1,5 @@
 package g44422.diamond.model;
 
-import java.util.*;
-
 /**
  * Represents an explorer.
  * @author g44422
@@ -68,10 +66,6 @@ public class Explorer {
 	 * @return The result of the comparaison.
 	 */
 	public boolean equals(Explorer explorer2) {
-		if(explorer2!=null) {
-			return(this.getPseudonym().equals(explorer2.getPseudonym()));
-		} else {
-			return false;
-		}
+		return explorer2 != null && (this.getPseudonym().equals(explorer2.getPseudonym()));
 	}
 }
