@@ -33,10 +33,6 @@ public class Bag {
     }
 
 	public boolean equals(Bag bag2) {
-    	if(bag2!=null) {
-    		return (this.getNbRubies()==bag2.getNbRubies());
-		} else {
-    		return false;
-		}
+		return bag2 != null && (this.getNbRubies() == bag2.getNbRubies());
 	}
 }

@@ -1,9 +1,6 @@
 package g44422.diamond.model;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Collection;
 
 /**
  * Defines a cave

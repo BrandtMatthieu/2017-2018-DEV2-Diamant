@@ -82,11 +82,7 @@ public class Game implements Model {
 	 * @throws RuntimeException Exception throwed if the explorer isn't in the list with the exploring explorers.
 	 */
 	public void handleExplorerDecisionToLeave(Explorer explorer) {
-		/* ToDo */
         if(getExploringExplorers().contains(explorer)) {
-        	/*if(askExplorerChoiceToContinue()) {
-				explorer.takeDecisionToLeave();
-			}*/
         	explorer.takeDecisionToLeave();
         } else {
             throw new RuntimeException();

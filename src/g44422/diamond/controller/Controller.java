@@ -3,6 +3,9 @@ package g44422.diamond.controller;
 import g44422.diamond.model.*;
 import g44422.diamond.view.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Class containing the differents main methods of the game.
  * @author 44422
@@ -38,9 +41,16 @@ public class Controller {
         while(!game.isOver()) {
             game.moveForward();
             view.displayGame();
-			for(int j = 0;j<game.getExplorers().size();j++) {
-				game.handleExplorerDecisionToLeave(game.getExplorers().get(j));
+            List <Explorer> leavingExplorers = new ArrayList<Explorer>();
+			for(int j = 0;j<game.getExploringExplorers().size();j++) {
+			    Explorer explorerToAsk = game.getExploringExplorers().get(j);
+			    if(view.askExplorerChoiceToContinue(explorerToAsk)) {
+                    leavingExplorers.add(explorerToAsk);
+                }
 			}
+            for (Explorer leavingExplorer : leavingExplorers) {
+                game.handleExplorerDecisionToLeave(leavingExplorer);
+            }
         }
         view.displayEnd();
     }

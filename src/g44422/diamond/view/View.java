@@ -80,7 +80,6 @@ public class View {
                 case "o":
                 case "yes":
                 case "y":
-                    explorer.takeDecisionToLeave();
                     return true;
                 case "non":
                 case "n":
@@ -96,8 +95,7 @@ public class View {
 	 * Displays the last tile discovered by the explorers.
 	 */
 	public void displayGame() {
-		/* ToDo */
-		System.out.println("Vous découvrez une tuile avec "+game.getCave().getLastDiscoveredTreasure().getRubies()+" rubis.");
+		System.out.println("Vous découvrez une tuile avec "+game.getCave().getLastDiscoveredTreasure().getInitNbRubies()+" rubis.");
     }
 
 	/**
