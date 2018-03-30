@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="/Diamant/src"/>
-	<classpathentry kind="src" path="/Diamant/Test Unitaires"/>
-	<classpathentry kind="lib" path="/Diamant/.idea/lib/junit-4.12.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
