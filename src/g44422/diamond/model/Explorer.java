@@ -26,6 +26,34 @@ public class Explorer {
 	}
 
 	/**
+	 * Checks if an explorer is equals to itself.
+	 *
+	 * @param o An empty obeject.
+	 * @return True if the explorer isn't null, is an explorer and if it's equals to itself.
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Explorer explorer = (Explorer) o;
+		return (Objects.equals(pseudonym, explorer.pseudonym) && Objects.equals(bag, explorer.bag) && state == explorer.state);
+	}
+
+	/**
+	 * Returns the hashCode of an explorer
+	 *
+	 * @return The hashcode of the explorer.
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(pseudonym, bag, state);
+	}
+
+	/**
 	 * Get the explorer's nickname.
 	 *
 	 * @return The explorer's nick.
@@ -69,30 +97,11 @@ public class Explorer {
 	}
 
 	/**
-	 * Checks if an explorer is equals to itself.
+	 * Returns the amount of rubies a player has in it's bag.
 	 *
-	 * @param o An empty obeject.
-	 * @return True if the explorer isn't null, is an explorer and if it's equals to itself.
+	 * @return The amount of rubies a player has in it's bag.
 	 */
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		Explorer explorer = (Explorer) o;
-		return (Objects.equals(pseudonym, explorer.pseudonym) && Objects.equals(bag, explorer.bag) && state == explorer.state);
-	}
-
-	/**
-	 * Returns the hashCode of an explorer
-	 *
-	 * @return The hashcode of the explorer.
-	 */
-	@Override
-	public int hashCode() {
-		return Objects.hash(pseudonym, bag, state);
+	public int getFortune() {
+		return this.getBag().getNbRubies();
 	}
 }

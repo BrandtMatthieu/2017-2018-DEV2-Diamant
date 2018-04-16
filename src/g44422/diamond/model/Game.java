@@ -130,4 +130,26 @@ public class Game implements Model {
 	public boolean isItPossibleToAddExplorer() {
 		return explorers.size() < 9;
 	}
+
+	/**
+	 * Returns a list with the winner(s) of the game, the players with the most rubies.
+	 *
+	 * @return The winner or winner of the game.
+	 */
+	public List<Explorer> getWinner() {
+		if (!isOver()) {
+			throw new GameException("getWinner() Method has been called before the game is over.");
+		}
+		List<Explorer> winner = new ArrayList<Explorer>();
+		winner.add(explorers.get(0));
+		for (int i = 1; i < explorers.size(); i++) {
+			if (explorers.get(i).getBag().getNbRubies() > winner.get(0).getBag().getNbRubies()) { // Better score
+				winner.clear();
+				winner.add(explorers.get(i));
+			} else if (explorers.get(i).getBag().getNbRubies() == winner.get(0).getBag().getNbRubies()) { // Ex-equo
+				winner.add(explorers.get(i));
+			}
+		}
+		return winner;
+	}
 }

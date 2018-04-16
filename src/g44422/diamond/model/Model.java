@@ -85,4 +85,11 @@ public interface Model {
 	 * @return True if it is possible to add new explorers to the game
 	 */
 	boolean isItPossibleToAddExplorer();
+
+	/**
+	 * Returns a list with the winner(s) of the game, the players with the most rubies.
+	 *
+	 * @return The winner or winner of the game.
+	 */
+	List<Explorer> getWinner();
 }
