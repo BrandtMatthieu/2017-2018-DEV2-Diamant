@@ -1,5 +1,7 @@
 package g44422.diamond.model;
 
+import java.util.Objects;
+
 /**
  * Represents a bag for each explorer.
  *
@@ -8,10 +10,11 @@ package g44422.diamond.model;
  */
 public class Bag {
 
+
 	private int nbRubies;
 
 	/**
-	 * Creates a new bag for the player.
+	 * Creates a new empty bag for the player.
 	 */
 	public Bag() {
 		this.nbRubies = 0;
@@ -35,7 +38,20 @@ public class Bag {
 		return this.nbRubies;
 	}
 
-	public boolean equals(Bag bag2) {
-		return bag2 != null && (this.getNbRubies() == bag2.getNbRubies());
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Bag bag = (Bag) o;
+		return nbRubies == bag.nbRubies;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nbRubies);
 	}
 }
