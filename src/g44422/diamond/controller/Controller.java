@@ -32,16 +32,6 @@ public class Controller {
 	 * Begins the game.
 	 */
 	public void startGame() {
-    	/*
-    	int i=0;
-        for(;i<3;i++) { // minimum 3 joueurs
-            game.addExplorer(view.askExplorer());
-        }
-        while(view.isThereNewExplorerToAdd() && i<=7) {
-			game.addExplorer(view.askExplorer());
-			i++;
-        }
-        */
 		while (!game.isThereEnoughExplorer()) {
 			game.addExplorer(view.askExplorer());
 		}
@@ -49,7 +39,8 @@ public class Controller {
 			game.addExplorer(view.askExplorer());
 		}
 		while (!game.isOver()) {
-			/* TODO */
+			game.moveForward(); //make the explorers discover tiles, does not initialise anything
+			view.displayGame(); //displays a message, does not initialise anything
 			List<Explorer> leavingExplorers = new ArrayList<Explorer>();
 			for (int j = 0; j < game.getExploringExplorers().size(); j++) {
 				Explorer explorerToAsk = game.getExploringExplorers().get(j);
@@ -61,6 +52,6 @@ public class Controller {
 				game.handleExplorerDecisionToLeave(leavingExplorer);
 			}
 		}
-		view.displayEnd();
+		view.displayWinner();
 	}
 }

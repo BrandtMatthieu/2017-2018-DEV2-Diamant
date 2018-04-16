@@ -98,15 +98,21 @@ public class View {
 	}
 
 	/**
-	 * Displays an end-message when the game is done, and also shows for each explorer it's score.
+	 * Displays an end-message when the game is done, and also shows the winner of the game.
 	 */
-	public void displayEnd() {
+	public void displayWinner() {
 		System.out.println("===========");
 		System.out.println("Fin du jeu.");
-		System.out.println("Classement:");
 		System.out.println("Explorateur | Rubis collectés");
-		for (int i = 0; i < game.getExplorers().size(); i++) {
-			System.out.println(game.getExplorers().get(i).getPseudonym() + "\t\t\t\t\t\t" + game.getExplorers().get(i).getBag().getNbRubies());
+		if (game.getWinner().size()>1){
+			System.out.println("Les gagnts exequo sont :");
+			for (int i=0;i <game.getWinner().size();i++) {
+				System.out.println(game.getWinner().get(i).getPseudonym());
+			}
+			System.out.println("avec "+game.getWinner().get(0).getFortune()+" rubis.");
+		} else {
+			System.out.println("Le gagnant est :");
+			System.out.println(game.getWinner().get(0).getPseudonym()+" avec "+game.getWinner().get(0).getFortune()+" rubis.");
 		}
 	}
 }

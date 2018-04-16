@@ -143,10 +143,10 @@ public class Game implements Model {
 		List<Explorer> winner = new ArrayList<Explorer>();
 		winner.add(explorers.get(0));
 		for (int i = 1; i < explorers.size(); i++) {
-			if (explorers.get(i).getBag().getNbRubies() > winner.get(0).getBag().getNbRubies()) { // Better score
+			if (explorers.get(i).getFortune() > winner.get(0).getFortune()) { // Better score
 				winner.clear();
 				winner.add(explorers.get(i));
-			} else if (explorers.get(i).getBag().getNbRubies() == winner.get(0).getBag().getNbRubies()) { // Ex-equo
+			} else if (explorers.get(i).getFortune() == winner.get(0).getFortune()) { // Ex-equo
 				winner.add(explorers.get(i));
 			}
 		}
