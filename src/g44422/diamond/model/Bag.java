@@ -38,6 +38,12 @@ public class Bag {
 		return this.nbRubies;
 	}
 
+	/**
+	 * Checks if a bag is equals to itself.
+	 *
+	 * @param o An empty object
+	 * @return True if the bag isn't empty, is an object and if is equals to itself.
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
@@ -50,6 +56,11 @@ public class Bag {
 		return nbRubies == bag.nbRubies;
 	}
 
+	/**
+	 * Returns the hashCode of the amount of rubies.
+	 *
+	 * @return the hashCode of the amount of rubies.
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(nbRubies);

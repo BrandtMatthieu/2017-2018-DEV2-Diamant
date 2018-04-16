@@ -52,22 +52,7 @@ public class View {
 	 */
 	public boolean isThereNewExplorerToAdd() {
 		System.out.println("Voulez-vous ajouter un nouvel utilisateur? [ OUI / NON ]");
-		while (true) {
-			String answer = in.nextLine();
-			switch (answer.toLowerCase()) {
-				case "oui":
-				case "o":
-				case "yes":
-				case "y":
-					return true;
-				case "non":
-				case "n":
-				case "no":
-					return false;
-				default:
-					System.out.println("Réponse non valide. Entrez une des proposition suivantes : [ OUI / NON ]");
-			}
-		}
+		return choice();
 	}
 
 	/**
@@ -78,6 +63,15 @@ public class View {
 	 */
 	public boolean askExplorerChoiceToContinue(Explorer explorer) {
 		System.out.println(explorer.getPseudonym() + ", voulez-vous quitter la grotte? [ OUI / NON ]");
+		return choice();
+	}
+
+	/**
+	 * Loop asking the explorer.
+	 *
+	 * @return The user's answer in a list of possibilities.
+	 */
+	private boolean choice() {
 		while (true) {
 			String answer = in.nextLine();
 			switch (answer.toLowerCase()) {

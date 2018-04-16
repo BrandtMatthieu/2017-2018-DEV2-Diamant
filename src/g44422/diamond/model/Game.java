@@ -51,7 +51,8 @@ public class Game implements Model {
 	 * @return The game's state.
 	 */
 	public boolean isOver() {
-		return !(getExploringExplorers().size() > 0);
+		/* TODO */
+		return getExploringExplorers().isEmpty();
 	}
 
 	/**

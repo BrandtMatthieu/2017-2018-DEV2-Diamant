@@ -7,6 +7,13 @@ package g44422.diamond.model;
  * @version 0.1
  */
 public enum State {
+	/**
+	 * Value of an exploring explorer.
+	 */
 	EXPLORING,
+
+	/**
+	 * Value of an leaving explorer.
+	 */
 	LEAVING
 }

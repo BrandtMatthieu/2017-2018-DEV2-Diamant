@@ -57,9 +57,10 @@ public class Treasure {
 	 * @param explorers All the explorers who wanna explore the tile.
 	 */
 	public void explore(List<Explorer> explorers) {
-		if (explorers.size() > 0) {
+		if (explorers.isEmpty()) {
+			int rubiesToShare = this.rubies / explorers.size();
 			for (Explorer explorer : explorers) {
-				explorer.addToBag(this.rubies / explorers.size());
+				explorer.addToBag(rubiesToShare);
 			}
 			this.rubies = this.rubies % explorers.size();
 		}

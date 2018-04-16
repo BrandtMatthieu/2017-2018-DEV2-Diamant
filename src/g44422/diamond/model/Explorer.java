@@ -1,5 +1,7 @@
 package g44422.diamond.model;
 
+import java.util.Objects;
+
 /**
  * Represents an explorer.
  *
@@ -67,12 +69,30 @@ public class Explorer {
 	}
 
 	/**
-	 * Says if two explorers are the same.
+	 * Checks if an explorer is equals to itself.
 	 *
-	 * @param explorer2 Another explorer to compate to.
-	 * @return The result of the comparaison.
+	 * @param o An empty obeject.
+	 * @return True if the explorer isn't null, is an explorer and if it's equals to itself.
 	 */
-	public boolean equals(Explorer explorer2) {
-		return explorer2 != null && (this.getPseudonym().equals(explorer2.getPseudonym()));
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Explorer explorer = (Explorer) o;
+		return (Objects.equals(pseudonym, explorer.pseudonym) && Objects.equals(bag, explorer.bag) && state == explorer.state);
+	}
+
+	/**
+	 * Returns the hashCode of an explorer
+	 *
+	 * @return The hashcode of the explorer.
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(pseudonym, bag, state);
 	}
 }

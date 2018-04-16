@@ -49,8 +49,7 @@ public class Controller {
 			game.addExplorer(view.askExplorer());
 		}
 		while (!game.isOver()) {
-			game.moveForward();
-			view.displayGame();
+			/* TODO */
 			List<Explorer> leavingExplorers = new ArrayList<Explorer>();
 			for (int j = 0; j < game.getExploringExplorers().size(); j++) {
 				Explorer explorerToAsk = game.getExploringExplorers().get(j);
