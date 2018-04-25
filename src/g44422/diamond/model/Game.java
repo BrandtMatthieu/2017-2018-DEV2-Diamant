@@ -181,10 +181,13 @@ public class Game implements Model {
 	}
 
 	/**
-	 * Closes the entrance of the current cave entrance.
+	 * Closes the entrance of the current cave entrance and put the tiles from the path back in the deck.
 	 */
 	public void endExplorationPhase() {
 		cave.getCurrentEntrance().lockOut();
+		for (Treasure treasure : cave.getCurrentEntrance().getPath()) {
+			cave.getDeck().putBack(treasure);
+		}
 	}
 
 	/**

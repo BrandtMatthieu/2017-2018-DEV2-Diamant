@@ -65,4 +65,11 @@ public class Treasure {
 			this.rubies = this.rubies % explorers.size();
 		}
 	}
+
+	/**
+	 * Restore the original amount of rubies on the tile.
+	 */
+	public void restore() {
+		this.rubies = this.initNbRubies;
+	}
 }

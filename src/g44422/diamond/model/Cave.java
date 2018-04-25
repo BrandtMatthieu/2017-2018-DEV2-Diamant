@@ -12,6 +12,17 @@ public class Cave {
 
 	private CaveEntrance currentEntrance;
 
+	private Deck deck;
+
+	/**
+	 * Gets the current deck.
+	 *
+	 * @return The current game's deck.
+	 */
+	public Deck getDeck() {
+		return deck;
+	}
+
 	/**
 	 * Creates a new cave.
 	 */

@@ -17,6 +17,8 @@ public class CaveEntrance {
 
 	private boolean lockedOut;
 
+	private Cave cave;
+
 	/**
 	 * Creates a new cave.
 	 */
@@ -24,6 +26,7 @@ public class CaveEntrance {
 		path = new ArrayList<Treasure>();
 		lastDiscoveredTreasure = new Treasure();
 		lockedOut = false;
+		cave = new Cave();
 	}
 
 	/**
@@ -59,7 +62,7 @@ public class CaveEntrance {
 	 * @param explorers The explorers who discover the treasure.
 	 */
 	public void discoverNewTreasure(List<Explorer> explorers) {
-		lastDiscoveredTreasure = new Treasure();
+		lastDiscoveredTreasure = cave.getDeck().getTreasure();
 		path.add(getLastDiscoveredTreasure());
 		getLastDiscoveredTreasure().explore(explorers);
 	}
