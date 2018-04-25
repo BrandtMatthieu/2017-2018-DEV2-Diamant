@@ -46,6 +46,7 @@ public class CaveEntrance {
 
 	/**
 	 * Returns the state of the CaveEntrance, locked or not.
+	 *
 	 * @return The state of the cave netrance, locked or not.
 	 */
 	public boolean isLockedOut() {
@@ -63,11 +64,11 @@ public class CaveEntrance {
 		getLastDiscoveredTreasure().explore(explorers);
 	}
 
-	public void returnToCamp(List <Explorer> explorers) {
-		for(Treasure treasure : getPath()) {
+	public void returnToCamp(List<Explorer> explorers) {
+		for (Treasure treasure : getPath()) {
 			treasure.explore(explorers);
 		}
-		for(Explorer explorer : explorers) {
+		for (Explorer explorer : explorers) {
 			explorer.reachCamp();
 		}
 	}

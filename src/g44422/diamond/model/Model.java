@@ -34,7 +34,7 @@ public interface Model {
 	 *
 	 * @return true if it's the end of the game.
 	 */
-	boolean isOver();
+	boolean isExplorationPhaseOver();
 
 	/**
 	 * Return the cave of the game.
@@ -97,4 +97,21 @@ public interface Model {
 	 * Make all wishing explorers leave the cave.
 	 */
 	void makeExplorersLeave();
+
+	/**
+	 * Creates a new cave entrance and sets the explorers ready to explore it.
+	 */
+	void startNewExplorationPhase();
+
+	/**
+	 * Closes the entrance of the current cave entrance.
+	 */
+	void endExplorationPhase();
+
+	/**
+	 * Tells if the game is finished by checking the current cave entrance and if there canb be new entrances.
+	 *
+	 * @return True if the game is over.
+	 */
+	boolean isOver();
 }

@@ -80,7 +80,7 @@ public class GameTest {
 	@Test
 	public void isOverNoExplorers() {
 		Game game = new Game();
-		assertTrue(game.isOver());
+		assertTrue(game.isExplorationPhaseOver());
 	}
 
 	@Test
@@ -88,7 +88,7 @@ public class GameTest {
 		Game game = new Game();
 		Explorer e1 = new Explorer("sdr");
 		game.addExplorer(e1);
-		assertFalse(game.isOver());
+		assertFalse(game.isExplorationPhaseOver());
 	}
 
 	@Test
@@ -97,7 +97,7 @@ public class GameTest {
 		Explorer e1 = new Explorer("sdr");
 		game.addExplorer(e1);
 		game.handleExplorerDecisionToLeave(e1);
-		assertTrue(game.isOver());
+		assertTrue(game.isExplorationPhaseOver());
 	}
 
 	@Test

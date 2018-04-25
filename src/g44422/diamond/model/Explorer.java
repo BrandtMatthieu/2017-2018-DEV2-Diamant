@@ -22,7 +22,7 @@ public class Explorer {
 	public Explorer(String pseudonym) {
 		this.pseudonym = pseudonym;
 		this.bag = new Bag();
-		this.state = State.EXPLORING;
+		this.state = State.CAMPING;
 	}
 
 	/**
@@ -106,9 +106,16 @@ public class Explorer {
 	}
 
 	/**
-	 *
+	 * Makes the explorers reach the camp and set the as camping.
 	 */
 	public void reachCamp() {
 		this.state = State.CAMPING;
+	}
+
+	/**
+	 * Set the explorer's state to exploring so he can begin to explore.
+	 */
+	public void startExploration() {
+		this.state = State.EXPLORING;
 	}
 }

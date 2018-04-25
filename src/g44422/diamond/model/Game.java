@@ -33,7 +33,7 @@ public class Game implements Model {
 	 */
 	public void addExplorer(Explorer explorer) {
 		if (isItPossibleToAddExplorer()) {
-			this.explorers.add(explorer);
+			explorers.add(explorer);
 		} else {
 			throw new GameException("Not possible to add any new explorer to the game.");
 		}
@@ -51,7 +51,7 @@ public class Game implements Model {
 	 *
 	 * @return The game's state.
 	 */
-	public boolean isOver() {
+	public boolean isExplorationPhaseOver() {
 		/* TODO */
 		return getExploringExplorers().isEmpty();
 	}
@@ -71,7 +71,7 @@ public class Game implements Model {
 	 * @return A list with all the explorers.
 	 */
 	public List<Explorer> getExplorers() {
-		return this.explorers;
+		return explorers;
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class Game implements Model {
 	 * @return The winner or winner of the game.
 	 */
 	public List<Explorer> getWinner() {
-		if (!isOver()) {
+		if (!isExplorationPhaseOver()) {
 			throw new GameException("getWinner() Method has been called before the game is over.");
 		}
 		List<Explorer> winner;
@@ -162,11 +162,37 @@ public class Game implements Model {
 	public void makeExplorersLeave() {
 		List<Explorer> leavingExplorers;
 		leavingExplorers = new ArrayList<Explorer>();
-		for(Explorer explorer : explorers) {
-			if(explorer.getState()==LEAVING) {
+		for (Explorer explorer : explorers) {
+			if (explorer.getState() == LEAVING) {
 				leavingExplorers.add(explorer);
 			}
 		}
 		cave.getCurrentEntrance().returnToCamp(leavingExplorers);
+	}
+
+	/**
+	 * Creates a new cave entry an set the explorers to an exploring state.
+	 */
+	public void startNewExplorationPhase() {
+		cave.openNewEntrance();
+		for (Explorer explorer : explorers) {
+			explorer.startExploration();
+		}
+	}
+
+	/**
+	 * Closes the entrance of the current cave entrance.
+	 */
+	public void endExplorationPhase() {
+		cave.getCurrentEntrance().lockOut();
+	}
+
+	/**
+	 * Tells if the game is finished by checking the current cave entrance and if there canb be new entrances.
+	 *
+	 * @return True if the game is over.
+	 */
+	public boolean isOver() {
+		return cave.getCurrentEntrance().isLockedOut() && (!cave.hasNewEntranceToExplore());
 	}
 }
