@@ -1,5 +1,6 @@
 package g44422.diamond.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,6 +12,17 @@ import java.util.List;
 public class Cave {
 
 	private Treasure lastDiscoveredTreasure;
+
+	private List<Treasure> path;
+
+	/**
+	 * Returns the path made of all discovered tiles.
+	 *
+	 * @return the path made of all discovered tiles.
+	 */
+	public List<Treasure> getPath() {
+		return path;
+	}
 
 	/**
 	 * Returns the last treasure discovered by the explorers.
@@ -26,6 +38,7 @@ public class Cave {
 	 */
 	public Cave() {
 		/* TODO */
+		path = new ArrayList<Treasure>();
 		lastDiscoveredTreasure = new Treasure();
 	}
 
@@ -36,6 +49,20 @@ public class Cave {
 	 */
 	public void discoverNewTreasure(List<Explorer> explorers) {
 		lastDiscoveredTreasure = new Treasure();
+		path.add(getLastDiscoveredTreasure());
 		getLastDiscoveredTreasure().explore(explorers);
+	}
+
+	public void returnToCamp(List <Explorer> explorers) {
+		for(Treasure treasure : getPath()) {
+			treasure.explore(explorers);
+		}
+		for(Explorer explorer : explorers) {
+			explorer.reachCamp();
+		}
+	}
+
+	void addTreasureToPath(Treasure treasure) {
+		path.add(treasure);
 	}
 }

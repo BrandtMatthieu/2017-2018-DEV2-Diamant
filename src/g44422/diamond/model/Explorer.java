@@ -104,4 +104,11 @@ public class Explorer {
 	public int getFortune() {
 		return this.getBag().getNbRubies();
 	}
+
+	/**
+	 *
+	 */
+	public void reachCamp() {
+		this.state = State.CAMPING;
+	}
 }

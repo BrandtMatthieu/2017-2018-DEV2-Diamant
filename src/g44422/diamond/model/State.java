@@ -15,5 +15,10 @@ public enum State {
 	/**
 	 * Value of an leaving explorer.
 	 */
-	LEAVING
+	LEAVING,
+
+	/**
+	 * Value of an explorer at his camp.
+	 */
+	CAMPING
 }

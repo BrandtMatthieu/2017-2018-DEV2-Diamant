@@ -94,6 +94,7 @@ public class View {
 	 * Displays the last tile discovered by the explorers.
 	 */
 	public void displayGame() {
+		System.out.println('\u000C');
 		System.out.println("Vous découvrez une tuile avec " + game.getCave().getLastDiscoveredTreasure().getInitNbRubies() + " rubis.");
 	}
 
@@ -101,18 +102,64 @@ public class View {
 	 * Displays an end-message when the game is done, and also shows the winner of the game.
 	 */
 	public void displayWinner() {
-		System.out.println("===========");
+		System.out.println('\u000C');
 		System.out.println("Fin du jeu.");
-		System.out.println("Explorateur | Rubis collectés");
-		if (game.getWinner().size()>1){
-			System.out.println("Les gagnts exequo sont :");
-			for (int i=0;i <game.getWinner().size();i++) {
-				System.out.println(game.getWinner().get(i).getPseudonym());
+		System.out.println("===========");
+		if (game.getWinner().size() > 1) {
+			System.out.println("Les gagnts ex æquo sont :");
+			for (int i = 0; i < game.getWinner().size() - 1; i++) {
+				System.out.print(game.getWinner().get(i).getPseudonym() + ", ");
 			}
-			System.out.println("avec "+game.getWinner().get(0).getFortune()+" rubis.");
+			System.out.print(game.getWinner().get(game.getWinner().size() - 1).getPseudonym());
+			System.out.println(" avec " + game.getWinner().get(0).getFortune() + " rubis.");
 		} else {
 			System.out.println("Le gagnant est :");
-			System.out.println(game.getWinner().get(0).getPseudonym()+" avec "+game.getWinner().get(0).getFortune()+" rubis.");
+			System.out.println(game.getWinner().get(0).getPseudonym() + " avec " + game.getWinner().get(0).getFortune() + " rubis.");
 		}
+	}
+
+	public void turnResumeDisplay() {
+		// Top
+		System.out.print("        ╔");
+		for (int i = 0; i < game.getCave().getPath().size() + 1; i++) {
+			System.out.print("╦═══════════╦");
+		}
+		System.out.print("\n════════╝");
+		for (int i = 0; i < game.getCave().getPath().size() + 1; i++) {
+			System.out.print("║           ║");
+		}
+
+		// Main info
+		System.out.print("\n Sortie ");
+		for (int i = 0; i < game.getCave().getPath().size(); i++) {
+			System.out.print("   ");
+			if (String.valueOf(game.getCave().getPath().get(i).getRubies()).length() == 1) {
+				System.out.print(" ");
+			}
+			System.out.print(game.getCave().getPath().get(i).getRubies());
+			System.out.print(" rubis  ");
+		}
+		System.out.print("      ?     ║\n");
+
+		// Bottom
+		System.out.print("════════╗");
+		for (int i = 0; i < game.getCave().getPath().size() + 1; i++) {
+			if (i == game.getCave().getPath().size() - 1) {
+				System.out.print("║  actuelle ║");
+			} else {
+				System.out.print("║           ║");
+			}
+		}
+		System.out.print("\n        ╚");
+		for (int i = 0; i < game.getCave().getPath().size() + 1; i++) {
+			System.out.print("╩═══════════╩");
+		}
+		System.out.println("\n");
+		System.out.println("Etat  -  Explorateur");
+		System.out.println("====================");
+		for (Explorer explorer : game.getExplorers()) {
+			System.out.println(explorer.getState() + "  -  " + explorer.getPseudonym());
+		}
+		System.out.println("\n\n");
 	}
 }

@@ -41,16 +41,20 @@ public class Controller {
 		while (!game.isOver()) {
 			game.moveForward(); //make the explorers discover tiles, does not initialise anything
 			view.displayGame(); //displays a message, does not initialise anything
+			view.turnResumeDisplay();
 			List<Explorer> leavingExplorers = new ArrayList<Explorer>();
 			for (int j = 0; j < game.getExploringExplorers().size(); j++) {
 				Explorer explorerToAsk = game.getExploringExplorers().get(j);
 				if (view.askExplorerChoiceToContinue(explorerToAsk)) {
 					leavingExplorers.add(explorerToAsk);
+
 				}
 			}
-			for (Explorer leavingExplorer : leavingExplorers) {
+			for(Explorer leavingExplorer : leavingExplorers) {
 				game.handleExplorerDecisionToLeave(leavingExplorer);
 			}
+			game.makeExplorersLeave();
+
 		}
 		view.displayWinner();
 	}

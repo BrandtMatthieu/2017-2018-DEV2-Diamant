@@ -92,4 +92,9 @@ public interface Model {
 	 * @return The winner or winner of the game.
 	 */
 	List<Explorer> getWinner();
+
+	/**
+	 * Make all wishing explorers leave the cave.
+	 */
+	void makeExplorersLeave();
 }

@@ -128,7 +128,7 @@ public class Game implements Model {
 	 * @return True if it is possible to add new explorers to the game
 	 */
 	public boolean isItPossibleToAddExplorer() {
-		return explorers.size() < 9;
+		return explorers.size() < 8;
 	}
 
 	/**
@@ -151,5 +151,18 @@ public class Game implements Model {
 			}
 		}
 		return winner;
+	}
+
+	/**
+	 * Makes the willing explorers reach the camp and exploring the path in the cave.
+	 */
+	public void makeExplorersLeave() {
+		List <Explorer> leavingExplorers = new ArrayList<Explorer>();
+		for(Explorer explorer : explorers) {
+			if(explorer.getState()==LEAVING) {
+				leavingExplorers.add(explorer);
+			}
+		}
+		this.cave.returnToCamp(leavingExplorers);
 	}
 }
