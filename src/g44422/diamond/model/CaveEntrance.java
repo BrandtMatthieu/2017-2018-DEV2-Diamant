@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Defines a cave
+ * Defines a cave entrance
  *
  * @author 44422
  * @version 0.1
@@ -14,6 +14,17 @@ public class CaveEntrance {
 	private Treasure lastDiscoveredTreasure;
 
 	private List<Treasure> path;
+
+	private boolean lockedOut;
+
+	/**
+	 * Creates a new cave.
+	 */
+	public CaveEntrance() {
+		path = new ArrayList<Treasure>();
+		lastDiscoveredTreasure = new Treasure();
+		lockedOut = false;
+	}
 
 	/**
 	 * Returns the path made of all discovered tiles.
@@ -34,11 +45,11 @@ public class CaveEntrance {
 	}
 
 	/**
-	 * Creates a new cave.
+	 * Returns the state of the CaveEntrance, locked or not.
+	 * @return The state of the cave netrance, locked or not.
 	 */
-	public CaveEntrance() {
-		path = new ArrayList<Treasure>();
-		lastDiscoveredTreasure = new Treasure();
+	public boolean isLockedOut() {
+		return lockedOut;
 	}
 
 	/**
@@ -63,5 +74,12 @@ public class CaveEntrance {
 
 	void addTreasureToPath(Treasure treasure) {
 		path.add(treasure);
+	}
+
+	/**
+	 * Locks the CaveEntrance.
+	 */
+	public void lockOut() {
+		this.lockedOut = true;
 	}
 }

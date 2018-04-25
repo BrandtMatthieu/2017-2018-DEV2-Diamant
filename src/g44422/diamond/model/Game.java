@@ -15,14 +15,14 @@ import static g44422.diamond.model.State.LEAVING;
 public class Game implements Model {
 
 	private List<Explorer> explorers;
-	private CaveEntrance caveEntrance;
+	private Cave cave;
 
 	/**
 	 * Creates a new game.
 	 */
 	public Game() {
 		this.explorers = new ArrayList<>();
-		this.caveEntrance = new CaveEntrance();
+		this.cave = new Cave();
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class Game implements Model {
 	 * Makes the explorer go forward in the cave.
 	 */
 	public void moveForward() {
-		getCaveEntrance().discoverNewTreasure(getExploringExplorers());
+		cave.getCurrentEntrance().discoverNewTreasure(getExploringExplorers());
 	}
 
 	/**
@@ -61,8 +61,8 @@ public class Game implements Model {
 	 *
 	 * @return The actual cave's number.
 	 */
-	public CaveEntrance getCaveEntrance() {
-		return caveEntrance;
+	public Cave getCave() {
+		return cave;
 	}
 
 	/**
@@ -167,6 +167,6 @@ public class Game implements Model {
 				leavingExplorers.add(explorer);
 			}
 		}
-		this.caveEntrance.returnToCamp(leavingExplorers);
+		cave.getCurrentEntrance().returnToCamp(leavingExplorers);
 	}
 }

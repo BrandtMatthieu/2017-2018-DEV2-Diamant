@@ -41,7 +41,7 @@ public interface Model {
 	 *
 	 * @return the game's cave.
 	 */
-	CaveEntrance getCaveEntrance();
+	Cave getCave();
 
 	/**
 	 * Give all explorers of the game. They could be exploring or leaving.

@@ -94,7 +94,7 @@ public class View {
 	 */
 	public void displayGame() {
 		System.out.println('\u000C');
-		System.out.println("Vous découvrez une tuile avec " + game.getCaveEntrance().getLastDiscoveredTreasure().getInitNbRubies() + " rubis.");
+		System.out.println("Vous découvrez une tuile avec " + game.getCave().getCurrentEntrance().getLastDiscoveredTreasure().getInitNbRubies() + " rubis.");
 	}
 
 	/**
@@ -120,37 +120,37 @@ public class View {
 	public void turnResumeDisplay() {
 		// Top
 		System.out.print("        ╔");
-		for (int i = 0; i < game.getCaveEntrance().getPath().size() + 1; i++) {
+		for (int i = 0; i < game.getCave().getCurrentEntrance().getPath().size() + 1; i++) {
 			System.out.print("╦═══════════╦");
 		}
 		System.out.print("\n════════╝");
-		for (int i = 0; i < game.getCaveEntrance().getPath().size() + 1; i++) {
+		for (int i = 0; i < game.getCave().getCurrentEntrance().getPath().size() + 1; i++) {
 			System.out.print("║           ║");
 		}
 
 		// Main info
 		System.out.print("\n Sortie ");
-		for (int i = 0; i < game.getCaveEntrance().getPath().size(); i++) {
+		for (int i = 0; i < game.getCave().getCurrentEntrance().getPath().size(); i++) {
 			System.out.print("   ");
-			if (String.valueOf(game.getCaveEntrance().getPath().get(i).getRubies()).length() == 1) {
+			if (String.valueOf(game.getCave().getCurrentEntrance().getPath().get(i).getRubies()).length() == 1) {
 				System.out.print(" ");
 			}
-			System.out.print(game.getCaveEntrance().getPath().get(i).getRubies());
+			System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getRubies());
 			System.out.print(" rubis  ");
 		}
 		System.out.print("      ?     ║\n");
 
 		// Bottom
 		System.out.print("════════╗");
-		for (int i = 0; i < game.getCaveEntrance().getPath().size() + 1; i++) {
-			if (i == game.getCaveEntrance().getPath().size() - 1) {
+		for (int i = 0; i < game.getCave().getCurrentEntrance().getPath().size() + 1; i++) {
+			if (i == game.getCave().getCurrentEntrance().getPath().size() - 1) {
 				System.out.print("║  actuelle ║");
 			} else {
 				System.out.print("║           ║");
 			}
 		}
 		System.out.print("\n        ╚");
-		for (int i = 0; i < game.getCaveEntrance().getPath().size() + 1; i++) {
+		for (int i = 0; i < game.getCave().getCurrentEntrance().getPath().size() + 1; i++) {
 			System.out.print("╩═══════════╩");
 		}
 		System.out.println("\n");
