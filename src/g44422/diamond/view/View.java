@@ -1,10 +1,9 @@
 package g44422.diamond.view;
 
-import java.util.Scanner;
-import java.util.Arrays;
+import g44422.diamond.model.Explorer;
+import g44422.diamond.model.Model;
 
-import g44422.diamond.controller.Controller;
-import g44422.diamond.model.*;
+import java.util.Scanner;
 
 /**
  * General cases of a view.
@@ -95,7 +94,7 @@ public class View {
 	 */
 	public void displayGame() {
 		System.out.println('\u000C');
-		System.out.println("Vous découvrez une tuile avec " + game.getCave().getLastDiscoveredTreasure().getInitNbRubies() + " rubis.");
+		System.out.println("Vous découvrez une tuile avec " + game.getCaveEntrance().getLastDiscoveredTreasure().getInitNbRubies() + " rubis.");
 	}
 
 	/**
@@ -121,37 +120,37 @@ public class View {
 	public void turnResumeDisplay() {
 		// Top
 		System.out.print("        ╔");
-		for (int i = 0; i < game.getCave().getPath().size() + 1; i++) {
+		for (int i = 0; i < game.getCaveEntrance().getPath().size() + 1; i++) {
 			System.out.print("╦═══════════╦");
 		}
 		System.out.print("\n════════╝");
-		for (int i = 0; i < game.getCave().getPath().size() + 1; i++) {
+		for (int i = 0; i < game.getCaveEntrance().getPath().size() + 1; i++) {
 			System.out.print("║           ║");
 		}
 
 		// Main info
 		System.out.print("\n Sortie ");
-		for (int i = 0; i < game.getCave().getPath().size(); i++) {
+		for (int i = 0; i < game.getCaveEntrance().getPath().size(); i++) {
 			System.out.print("   ");
-			if (String.valueOf(game.getCave().getPath().get(i).getRubies()).length() == 1) {
+			if (String.valueOf(game.getCaveEntrance().getPath().get(i).getRubies()).length() == 1) {
 				System.out.print(" ");
 			}
-			System.out.print(game.getCave().getPath().get(i).getRubies());
+			System.out.print(game.getCaveEntrance().getPath().get(i).getRubies());
 			System.out.print(" rubis  ");
 		}
 		System.out.print("      ?     ║\n");
 
 		// Bottom
 		System.out.print("════════╗");
-		for (int i = 0; i < game.getCave().getPath().size() + 1; i++) {
-			if (i == game.getCave().getPath().size() - 1) {
+		for (int i = 0; i < game.getCaveEntrance().getPath().size() + 1; i++) {
+			if (i == game.getCaveEntrance().getPath().size() - 1) {
 				System.out.print("║  actuelle ║");
 			} else {
 				System.out.print("║           ║");
 			}
 		}
 		System.out.print("\n        ╚");
-		for (int i = 0; i < game.getCave().getPath().size() + 1; i++) {
+		for (int i = 0; i < game.getCaveEntrance().getPath().size() + 1; i++) {
 			System.out.print("╩═══════════╩");
 		}
 		System.out.println("\n");

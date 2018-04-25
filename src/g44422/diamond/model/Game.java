@@ -3,7 +3,8 @@ package g44422.diamond.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import static g44422.diamond.model.State.*;
+import static g44422.diamond.model.State.EXPLORING;
+import static g44422.diamond.model.State.LEAVING;
 
 /**
  * Creates a game.
@@ -14,14 +15,14 @@ import static g44422.diamond.model.State.*;
 public class Game implements Model {
 
 	private List<Explorer> explorers;
-	private Cave cave;
+	private CaveEntrance caveEntrance;
 
 	/**
 	 * Creates a new game.
 	 */
 	public Game() {
 		this.explorers = new ArrayList<>();
-		this.cave = new Cave();
+		this.caveEntrance = new CaveEntrance();
 	}
 
 	/**
@@ -42,7 +43,7 @@ public class Game implements Model {
 	 * Makes the explorer go forward in the cave.
 	 */
 	public void moveForward() {
-		getCave().discoverNewTreasure(getExploringExplorers());
+		getCaveEntrance().discoverNewTreasure(getExploringExplorers());
 	}
 
 	/**
@@ -60,8 +61,8 @@ public class Game implements Model {
 	 *
 	 * @return The actual cave's number.
 	 */
-	public Cave getCave() {
-		return cave;
+	public CaveEntrance getCaveEntrance() {
+		return caveEntrance;
 	}
 
 	/**
@@ -79,7 +80,8 @@ public class Game implements Model {
 	 * @return All the exploring explorers.
 	 */
 	public List<Explorer> getExploringExplorers() {
-		List<Explorer> exploringExplorers = new ArrayList<Explorer>();
+		List<Explorer> exploringExplorers;
+		exploringExplorers = new ArrayList<Explorer>();
 		for (Explorer explorer : getExplorers()) {
 			if (explorer.getState().equals(EXPLORING)) {
 				exploringExplorers.add(explorer);
@@ -140,7 +142,8 @@ public class Game implements Model {
 		if (!isOver()) {
 			throw new GameException("getWinner() Method has been called before the game is over.");
 		}
-		List<Explorer> winner = new ArrayList<Explorer>();
+		List<Explorer> winner;
+		winner = new ArrayList<Explorer>();
 		winner.add(explorers.get(0));
 		for (int i = 1; i < explorers.size(); i++) {
 			if (explorers.get(i).getFortune() > winner.get(0).getFortune()) { // Better score
@@ -157,12 +160,13 @@ public class Game implements Model {
 	 * Makes the willing explorers reach the camp and exploring the path in the cave.
 	 */
 	public void makeExplorersLeave() {
-		List <Explorer> leavingExplorers = new ArrayList<Explorer>();
+		List<Explorer> leavingExplorers;
+		leavingExplorers = new ArrayList<Explorer>();
 		for(Explorer explorer : explorers) {
 			if(explorer.getState()==LEAVING) {
 				leavingExplorers.add(explorer);
 			}
 		}
-		this.cave.returnToCamp(leavingExplorers);
+		this.caveEntrance.returnToCamp(leavingExplorers);
 	}
 }

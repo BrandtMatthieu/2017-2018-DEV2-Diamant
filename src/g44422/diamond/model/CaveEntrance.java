@@ -9,7 +9,7 @@ import java.util.List;
  * @author 44422
  * @version 0.1
  */
-public class Cave {
+public class CaveEntrance {
 
 	private Treasure lastDiscoveredTreasure;
 
@@ -36,8 +36,7 @@ public class Cave {
 	/**
 	 * Creates a new cave.
 	 */
-	public Cave() {
-		/* TODO */
+	public CaveEntrance() {
 		path = new ArrayList<Treasure>();
 		lastDiscoveredTreasure = new Treasure();
 	}

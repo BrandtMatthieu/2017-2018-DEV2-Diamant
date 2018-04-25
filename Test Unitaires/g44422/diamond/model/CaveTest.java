@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class CaveTest {
 
@@ -12,8 +12,8 @@ public class CaveTest {
 	public void discoverNewTreasureSameSharing() {
 		Explorer e1 = new Explorer("e1");
 		Explorer e2 = new Explorer("e2");
-		Cave cave = new Cave();
-		cave.discoverNewTreasure(Arrays.asList(e1, e2));
-		assertTrue(e1.getBag().equals(e2.getBag()));
+		CaveEntrance caveEntrance = new CaveEntrance();
+		caveEntrance.discoverNewTreasure(Arrays.asList(e1, e2));
+		assertEquals(e1.getBag(), e2.getBag());
 	}
 }
