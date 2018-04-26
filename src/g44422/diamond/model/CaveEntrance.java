@@ -11,9 +11,9 @@ import java.util.List;
  */
 public class CaveEntrance {
 
-	private Treasure lastDiscoveredTreasure;
+	private Tile lastDiscoveredTile;
 
-	private List<Treasure> path;
+	private List<Tile> path;
 
 	private boolean lockedOut;
 
@@ -23,8 +23,8 @@ public class CaveEntrance {
 	 * Creates a new cave.
 	 */
 	public CaveEntrance() {
-		path = new ArrayList<Treasure>();
-		lastDiscoveredTreasure = new Treasure();
+		path = new ArrayList<Tile>();
+		lastDiscoveredTile = new Treasure();
 		lockedOut = false;
 		cave = new Cave();
 	}
@@ -34,7 +34,7 @@ public class CaveEntrance {
 	 *
 	 * @return the path made of all discovered tiles.
 	 */
-	public List<Treasure> getPath() {
+	public List<Tile> getPath() {
 		return path;
 	}
 
@@ -43,8 +43,8 @@ public class CaveEntrance {
 	 *
 	 * @return the last discovered treasure.
 	 */
-	public Treasure getLastDiscoveredTreasure() {
-		return lastDiscoveredTreasure;
+	public Tile getLastDiscoveredTile() {
+		return lastDiscoveredTile;
 	}
 
 	/**
@@ -61,22 +61,22 @@ public class CaveEntrance {
 	 *
 	 * @param explorers The explorers who discover the treasure.
 	 */
-	public void discoverNewTreasure(List<Explorer> explorers) {
-		lastDiscoveredTreasure = cave.getDeck().getTreasure();
-		path.add(getLastDiscoveredTreasure());
-		getLastDiscoveredTreasure().explore(explorers);
+	public void discoverNewTile(List<Explorer> explorers) {
+		lastDiscoveredTile = cave.getDeck().getTile();
+		path.add(getLastDiscoveredTile());
+		getLastDiscoveredTile().explore(explorers);
 	}
 
 	public void returnToCamp(List<Explorer> explorers) {
-		for (Treasure treasure : getPath()) {
-			treasure.explore(explorers);
+		for (Tile tile : getPath()) {
+			tile.explore(explorers);
 		}
 		for (Explorer explorer : explorers) {
 			explorer.reachCamp();
 		}
 	}
 
-	void addTreasureToPath(Treasure treasure) {
+	void addTileToPath(Treasure treasure) {
 		path.add(treasure);
 	}
 

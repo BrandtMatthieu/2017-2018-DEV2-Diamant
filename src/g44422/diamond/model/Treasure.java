@@ -8,7 +8,7 @@ import java.util.List;
  * @author 44422
  * @version 0.1
  */
-public class Treasure {
+public class Treasure implements Tile {
 
 	private int rubies;
 
@@ -56,6 +56,7 @@ public class Treasure {
 	 *
 	 * @param explorers All the explorers who wanna explore the tile.
 	 */
+	@Override
 	public void explore(List<Explorer> explorers) {
 		if (!explorers.isEmpty()) {
 			int rubiesToShare = this.rubies / explorers.size();
@@ -71,5 +72,10 @@ public class Treasure {
 	 */
 	public void restore() {
 		this.rubies = this.initNbRubies;
+	}
+
+	@Override
+	public HazardType getType() {
+		return null;
 	}
 }

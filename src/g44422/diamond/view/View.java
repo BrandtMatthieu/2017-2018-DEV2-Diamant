@@ -94,7 +94,7 @@ public class View {
 	 */
 	public void displayGame() {
 		System.out.println('\u000C');
-		System.out.println("Vous découvrez une tuile avec " + game.getCave().getCurrentEntrance().getLastDiscoveredTreasure().getInitNbRubies() + " rubis.");
+		System.out.println("Vous découvrez une tuile avec " + game.getCave().getCurrentEntrance().getLastDiscoveredTile().getInitNbRubies() + " rubis.");
 	}
 
 	/**

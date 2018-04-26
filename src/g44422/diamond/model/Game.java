@@ -43,7 +43,7 @@ public class Game implements Model {
 	 * Makes the explorer go forward in the cave.
 	 */
 	public void moveForward() {
-		cave.getCurrentEntrance().discoverNewTreasure(getExploringExplorers());
+		cave.getCurrentEntrance().discoverNewTile(getExploringExplorers());
 	}
 
 	/**
@@ -185,8 +185,10 @@ public class Game implements Model {
 	 */
 	public void endExplorationPhase() {
 		cave.getCurrentEntrance().lockOut();
-		for (Treasure treasure : cave.getCurrentEntrance().getPath()) {
-			cave.getDeck().putBack(treasure);
+		for (Tile tile : cave.getCurrentEntrance().getPath()) {
+			if (tile instanceof Treasure) {
+				cave.getDeck().putBack(tile);
+			}
 		}
 	}
 

@@ -13,7 +13,7 @@ public class CaveTest {
 		Explorer e1 = new Explorer("e1");
 		Explorer e2 = new Explorer("e2");
 		CaveEntrance caveEntrance = new CaveEntrance();
-		caveEntrance.discoverNewTreasure(Arrays.asList(e1, e2));
+		caveEntrance.discoverNewTile(Arrays.asList(e1, e2));
 		assertEquals(e1.getBag(), e2.getBag());
 	}
 }

@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Deck {
 
-	private List<Treasure> tiles;
+	private List<Tile> tiles;
 
 	/**
 	 * Creates a new deck of cards with pre-selected values.
@@ -27,6 +27,11 @@ public class Deck {
 				tiles.add(new Treasure(14));
 			}
 		}
+		for (HazardType hazard : HazardType.values()) {
+			for (int i = 0; i < 3; i++) {
+				this.tiles.add(new Hazard(hazard));
+			}
+		}
 	}
 
 	/**
@@ -34,8 +39,8 @@ public class Deck {
 	 *
 	 * @return One randome tile of the deck.
 	 */
-	public Treasure getTreasure() {
-		Treasure toReturn = tiles.get(Math.round((int) Math.random() * (tiles.size() - 1)));
+	public Tile getTile() {
+		Tile toReturn = tiles.get(Math.round((int) Math.random() * (tiles.size() - 1)));
 		tiles.remove(toReturn);
 		return toReturn;
 	}
@@ -43,10 +48,10 @@ public class Deck {
 	/**
 	 * Puts the tile back into the deck and restores its initial value.
 	 *
-	 * @param treasure The treasure to put back in the deck.
+	 * @param tile The tile to put back in the deck.
 	 */
-	public void putBack(Treasure treasure) {
-		treasure.restore();
-		tiles.add(treasure);
+	public void putBack(Tile tile) {
+		tile.restore();
+		tiles.add(tile);
 	}
 }
