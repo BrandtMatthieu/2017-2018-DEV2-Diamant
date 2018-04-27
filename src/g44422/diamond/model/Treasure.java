@@ -17,6 +17,7 @@ public class Treasure implements Tile {
 	 *
 	 * @return The amount of rubies on the tile.
 	 */
+	@Override
 	public int getRubies() {
 		return this.rubies;
 	}
@@ -28,6 +29,7 @@ public class Treasure implements Tile {
 	 *
 	 * @return The amount of rubies that stood on the tile when it was created.
 	 */
+	@Override
 	public int getInitNbRubies() {
 		return this.initNbRubies;
 	}
@@ -60,9 +62,9 @@ public class Treasure implements Tile {
 	public void explore(List<Explorer> explorers) {
 		if (!explorers.isEmpty()) {
 			int rubiesToShare = this.rubies / explorers.size();
-			for (Explorer explorer : explorers) {
+			explorers.forEach((explorer) -> {
 				explorer.addToBag(rubiesToShare);
-			}
+			});
 			this.rubies = this.rubies % explorers.size();
 		}
 	}
@@ -70,11 +72,11 @@ public class Treasure implements Tile {
 	/**
 	 * Restore the original amount of rubies on the tile.
 	 */
+	@Override
 	public void restore() {
 		this.rubies = this.initNbRubies;
 	}
 
-	@Override
 	public HazardType getType() {
 		return null;
 	}

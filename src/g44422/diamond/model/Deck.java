@@ -1,5 +1,6 @@
 package g44422.diamond.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,7 @@ public class Deck {
 	 * Creates a new deck of cards with pre-selected values.
 	 */
 	public Deck() {
+		tiles = new ArrayList<>();
 		for (int i = 1; i < 6; i++) {
 			tiles.add(new Treasure(i));
 		}
@@ -29,7 +31,7 @@ public class Deck {
 		}
 		for (HazardType hazard : HazardType.values()) {
 			for (int i = 0; i < 3; i++) {
-				this.tiles.add(new Hazard(hazard));
+				tiles.add(new Hazard(hazard));
 			}
 		}
 	}
@@ -40,7 +42,7 @@ public class Deck {
 	 * @return One randome tile of the deck.
 	 */
 	public Tile getTile() {
-		Tile toReturn = tiles.get(Math.round((int) Math.random() * (tiles.size() - 1)));
+		Tile toReturn = tiles.get(Math.round((int) (Math.random() * (tiles.size() - 1))));
 		tiles.remove(toReturn);
 		return toReturn;
 	}

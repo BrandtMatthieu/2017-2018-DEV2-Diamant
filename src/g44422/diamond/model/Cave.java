@@ -15,22 +15,6 @@ public class Cave {
 	private Deck deck;
 
 	/**
-	 * Gets the current deck.
-	 *
-	 * @return The current game's deck.
-	 */
-	public Deck getDeck() {
-		return deck;
-	}
-
-	/**
-	 * Creates a new cave.
-	 */
-	public Cave() {
-		this.nbExploredEntrance = 0;
-	}
-
-	/**
 	 * Returns the number of explored cave entrances.
 	 *
 	 * @return the number of explored cave entrances.
@@ -49,6 +33,29 @@ public class Cave {
 	}
 
 	/**
+	 * Creates a new cave, a new entrance and a new deck.
+	 */
+	public Cave() {
+		nbExploredEntrance = 0;
+		deck = new Deck();
+	}
+
+	public Cave(int i) {
+		nbExploredEntrance = 0;
+		deck = new Deck();
+		currentEntrance = new CaveEntrance(this);
+	}
+
+	/**
+	 * Gets the current deck.
+	 *
+	 * @return The current game's deck.
+	 */
+	public Deck getDeck() {
+		return deck;
+	}
+
+	/**
 	 * Returns true if less than 5 cave entrances have been explored.
 	 *
 	 * @return true if less than 5 cave entrances have been explored.
@@ -60,13 +67,20 @@ public class Cave {
 	/**
 	 * Opens a new entrance of the cave
 	 *
-	 * @throws GameException If the previous entrance is still not closed or if 5 entrances have already been opened.
+	 * @throws GameException If the previous entrance is still not closed or if
+	 *                       5 entrances have already been opened.
 	 */
 	public void openNewEntrance() {
-		if ((!hasNewEntranceToExplore()) || (!currentEntrance.isLockedOut())) {
-			throw new GameException("Cannot open a new cave entrance.\nEither 5 entrances have already been opened or the exploring phase is still not finished for some explorers");
+		if (currentEntrance == null) {
+			currentEntrance = new CaveEntrance(this);
+			nbExploredEntrance++;
 		} else {
-			currentEntrance = new CaveEntrance();
+			if ((!hasNewEntranceToExplore()) || (!currentEntrance.isLockedOut())) {
+				throw new GameException("Cannot open a new cave entrance.\nEither 5 entrances have already been opened or the exploring phase is still not finished for some explorers");
+			} else {
+				currentEntrance = new CaveEntrance(this);
+				nbExploredEntrance++;
+			}
 		}
 	}
 
@@ -75,5 +89,14 @@ public class Cave {
 	 */
 	public void lockOutCurrentEntrance() {
 		this.currentEntrance.lockOut();
+	}
+
+	/**
+	 * Checks if the last entrance is unsafe or not.
+	 *
+	 * @return True if the laste cave entrance is unsafe.
+	 */
+	public boolean isLastEntranceUnsafe() {
+		return this.getCurrentEntrance().isUnsafe();
 	}
 }

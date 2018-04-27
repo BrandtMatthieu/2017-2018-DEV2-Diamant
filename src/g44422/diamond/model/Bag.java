@@ -10,7 +10,6 @@ import java.util.Objects;
  */
 public class Bag {
 
-
 	private int nbRubies;
 
 	/**
@@ -18,15 +17,6 @@ public class Bag {
 	 */
 	public Bag() {
 		this.nbRubies = 0;
-	}
-
-	/**
-	 * Adds the specifies amound of rubbies to a player's bag.
-	 *
-	 * @param nbRubies The amount of rubbies to add.
-	 */
-	public void addRubies(int nbRubies) {
-		this.nbRubies = this.nbRubies + nbRubies;
 	}
 
 	/**
@@ -39,9 +29,25 @@ public class Bag {
 	}
 
 	/**
-	 * Checks if a bag is equals to itself.
+	 * Adds the specifies amound of rubbies to a player's bag.
 	 *
-	 * @param o An empty object
+	 * @param nbRubies The amount of rubbies to add.
+	 */
+	public void addRubies(int nbRubies) {
+		this.nbRubies = this.nbRubies + nbRubies;
+	}
+
+	/**
+	 * Resets the player's bag when he falls into a trap.
+	 */
+	public void loseContent() {
+		this.nbRubies = 0;
+	}
+
+	/**
+	 * Checks if a bag is a bag.
+	 *
+	 * @param o An empty object.
 	 * @return True if the bag isn't empty, is an object and if is equals to itself.
 	 */
 	@Override
@@ -65,4 +71,5 @@ public class Bag {
 	public int hashCode() {
 		return Objects.hash(nbRubies);
 	}
+
 }

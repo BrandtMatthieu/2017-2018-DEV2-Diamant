@@ -62,7 +62,11 @@ public class GameTest {
 		game.addExplorer(e2);
 		game.handleExplorerDecisionToLeave(e1);
 		game.moveForward();
-		assertTrue(e2.getBag().getNbRubies() > 0);
+		if (game.getCave().getCurrentEntrance().getLastDiscoveredTile() instanceof Treasure && game.getCave().getCurrentEntrance().getLastDiscoveredTile().getRubies() > 0) {
+			assertTrue(e2.getBag().getNbRubies() > 0);
+		} else {
+			assertTrue(true);
+		}
 	}
 
 	@Test
@@ -111,5 +115,23 @@ public class GameTest {
 		List<Explorer> exploringExplorers = game.getExploringExplorers();
 		assertTrue(exploringExplorers.size() == 1
 				&& exploringExplorers.contains(e2));
+	}
+
+	//CUSTOM TESTS
+	@Test
+	public void explorerIsSameAfterbeingAddedToGame() {
+		Explorer explorer = new Explorer("44422");
+		Game game = new Game();
+		game.addExplorer(explorer);
+		assertEquals(explorer, game.getExplorers().get(0));
+	}
+
+	@Test
+	public void isExplorationPhaseOver() {
+		Explorer explorer = new Explorer("44422");
+		Game game = new Game();
+		game.addExplorer(explorer);
+		game.handleExplorerDecisionToLeave(explorer);
+		assertTrue(game.isExplorationPhaseOver());
 	}
 }

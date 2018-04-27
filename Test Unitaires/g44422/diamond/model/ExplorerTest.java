@@ -72,4 +72,18 @@ public class ExplorerTest {
 		Explorer e1 = new Explorer("mcd");
 		assertFalse(e1.equals(null));
 	}
+
+	//CUSTOM TESTS
+	@Test
+	public void getFortuneEqualsGetBagGetNbRubiesWithEmptyBag() {
+		Explorer explorer = new Explorer("44422");
+		assertEquals(explorer.getBag().getNbRubies(), explorer.getFortune());
+	}
+
+	@Test
+	public void getFortuneEqualsGetBagGetNbRubiesWithFullBag() {
+		Explorer explorer = new Explorer("44422");
+		explorer.addToBag(42);
+		assertEquals(explorer.getBag().getNbRubies(), explorer.getFortune());
+	}
 }

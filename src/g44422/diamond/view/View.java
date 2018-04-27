@@ -1,6 +1,7 @@
 package g44422.diamond.view;
 
 import g44422.diamond.model.Explorer;
+import g44422.diamond.model.Hazard;
 import g44422.diamond.model.Model;
 
 import java.util.Scanner;
@@ -93,15 +94,19 @@ public class View {
 	 * Displays the last tile discovered by the explorers.
 	 */
 	public void displayGame() {
-		System.out.println('\u000C');
-		System.out.println("Vous découvrez une tuile avec " + game.getCave().getCurrentEntrance().getLastDiscoveredTile().getInitNbRubies() + " rubis.");
+		System.out.println("\n");
+		if (game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1) instanceof Hazard) {
+			System.out.println("Pas de chance, vous tombez sur une carte \"Danger\". Le danger est de type " + game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString() + ".");
+		} else {
+			System.out.println("Vous découvrez une tuile avec " + game.getCave().getCurrentEntrance().getLastDiscoveredTile().getInitNbRubies() + " rubis.");
+		}
 	}
 
 	/**
 	 * Displays an end-message when the game is done, and also shows the winner of the game.
 	 */
 	public void displayWinner() {
-		System.out.println('\u000C');
+		System.out.println("\n");
 		System.out.println("Fin du jeu.");
 		System.out.println("===========");
 		if (game.getWinner().size() > 1) {
@@ -131,14 +136,25 @@ public class View {
 		// Main info
 		System.out.print("\n Sortie ");
 		for (int i = 0; i < game.getCave().getCurrentEntrance().getPath().size(); i++) {
-			System.out.print("   ");
-			if (String.valueOf(game.getCave().getCurrentEntrance().getPath().get(i).getRubies()).length() == 1) {
-				System.out.print(" ");
+			if (game.getCave().getCurrentEntrance().getPath().get(i) instanceof Hazard) {
+
+				for (int j = 0; j < (13 - game.getCave().getCurrentEntrance().getPath().get(i).getType().toString().length()) / 2; j++) {
+					System.out.print(" ");
+				}
+				System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getType().toString());
+				for (int k = 0; k < ((13 - game.getCave().getCurrentEntrance().getPath().get(i).getType().toString().length() / 2) - game.getCave().getCurrentEntrance().getPath().get(i).getType().toString().length()); k++) {
+					System.out.print(" ");
+				}
+			} else {
+				System.out.print("   ");
+				if (String.valueOf(game.getCave().getCurrentEntrance().getPath().get(i).getRubies()).length() == 1) {
+					System.out.print(" ");
+				}
+				System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getRubies());
+				System.out.print(" rubis  ");
 			}
-			System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getRubies());
-			System.out.print(" rubis  ");
 		}
-		System.out.print("      ?     ║\n");
+		System.out.print("       ?     ║\n");
 
 		// Bottom
 		System.out.print("════════╗");
@@ -156,9 +172,13 @@ public class View {
 		System.out.println("\n");
 		System.out.println("Etat  -  Explorateur");
 		System.out.println("====================");
-		for (Explorer explorer : game.getExplorers()) {
+
+		game.getExplorers().forEach((explorer) -> {
 			System.out.println(explorer.getState() + "  -  " + explorer.getPseudonym());
-		}
-		System.out.println("\n\n");
+		});
+	}
+
+	public void displayRunAway() {
+		System.out.println("Vous êtes tombé sur une autre carte \"Danger\".\nVous fuyez en dehors de la grotte en abandonnant votre butin à l'intérieur.");
 	}
 }

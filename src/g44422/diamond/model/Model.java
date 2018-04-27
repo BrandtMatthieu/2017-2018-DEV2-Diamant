@@ -114,4 +114,7 @@ public interface Model {
 	 * @return True if the game is over.
 	 */
 	boolean isOver();
+
+
+	boolean isExplorationPhaseAborted();
 }

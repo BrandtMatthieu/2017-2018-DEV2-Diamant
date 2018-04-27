@@ -54,4 +54,30 @@ public class BagTest {
 		Bag bag1 = new Bag();
 		assertFalse(bag1.equals(null));
 	}
+
+	//CUSTOM TESTS
+	@Test
+	public void equalsTestTrueAfterAddingNegative() {
+		Bag bag1 = new Bag();
+		Bag bag2 = new Bag();
+		bag1.addRubies(-1);
+		bag2.addRubies(-1);
+		assertTrue(bag1.equals(bag2));
+	}
+
+	@Test
+	public void isEmptyAfterLoseContent() {
+		Bag bag1 = new Bag();
+		bag1.addRubies(42);
+		bag1.loseContent();
+		assertEquals(0, bag1.getNbRubies());
+	}
+
+	@Test
+	public void isEmptyAfterLoseNegativeContent() {
+		Bag bag1 = new Bag();
+		bag1.addRubies(-1);
+		bag1.loseContent();
+		assertEquals(0, bag1.getNbRubies());
+	}
 }

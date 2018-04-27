@@ -21,6 +21,7 @@ public class Hazard implements Tile {
 	 *
 	 * @return the type of danger of the tile.
 	 */
+	@Override
 	public HazardType getType() {
 		return type;
 	}
@@ -47,5 +48,10 @@ public class Hazard implements Tile {
 
 	public int getRubies() {
 		return 0;
+	}
+
+	@Override
+	public String toString() {
+		return "" + type;
 	}
 }

@@ -22,7 +22,8 @@ public class Explorer {
 	public Explorer(String pseudonym) {
 		this.pseudonym = pseudonym;
 		this.bag = new Bag();
-		this.state = State.CAMPING;
+		this.state = State.EXPLORING;
+		//this.state = State.CAMPING;
 	}
 
 	/**
@@ -40,7 +41,7 @@ public class Explorer {
 			return false;
 		}
 		Explorer explorer = (Explorer) o;
-		return (Objects.equals(pseudonym, explorer.pseudonym) && Objects.equals(bag, explorer.bag) && state == explorer.state);
+		return (Objects.equals(this.getPseudonym(), explorer.getPseudonym()) && Objects.equals(this.getBag(), explorer.getBag()) && this.getState() == explorer.getState());
 	}
 
 	/**
@@ -68,7 +69,7 @@ public class Explorer {
 	 * @return The amount of rubbies in the explorer's bag.
 	 */
 	public Bag getBag() {
-		return bag;
+		return this.bag;
 	}
 
 	/**
@@ -117,5 +118,10 @@ public class Explorer {
 	 */
 	public void startExploration() {
 		this.state = State.EXPLORING;
+	}
+
+	public void runAway() {
+		this.getBag().loseContent();
+		this.reachCamp();
 	}
 }

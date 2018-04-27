@@ -9,7 +9,7 @@ import java.util.List;
  * @author 44422
  * @version 0.1
  */
-public class CaveEntrance {
+public class CaveEntrance extends Cave {
 
 	private Tile lastDiscoveredTile;
 
@@ -17,16 +17,34 @@ public class CaveEntrance {
 
 	private boolean lockedOut;
 
+	private boolean unsafe;
+
 	private Cave cave;
 
 	/**
 	 * Creates a new cave.
 	 */
 	public CaveEntrance() {
-		path = new ArrayList<Tile>();
-		lastDiscoveredTile = new Treasure();
+		System.out.println("CAVE ENTRANCE L30 | Cave entrance sans param");
 		lockedOut = false;
-		cave = new Cave();
+		unsafe = false;
+		path.clear();
+	}
+
+	public CaveEntrance(Cave caveParam) {
+		System.out.println("CAVE ENTRANCE L36 | Cave entrance avec param");
+		this.cave = caveParam;
+		lockedOut = false;
+		unsafe = false;
+		path = new ArrayList<>();
+	}
+
+	public Cave getCave() {
+		return cave;
+	}
+
+	public boolean isUnsafe() {
+		return unsafe;
 	}
 
 	/**
@@ -44,7 +62,7 @@ public class CaveEntrance {
 	 * @return the last discovered treasure.
 	 */
 	public Tile getLastDiscoveredTile() {
-		return lastDiscoveredTile;
+		return this.lastDiscoveredTile;
 	}
 
 	/**
@@ -62,22 +80,30 @@ public class CaveEntrance {
 	 * @param explorers The explorers who discover the treasure.
 	 */
 	public void discoverNewTile(List<Explorer> explorers) {
-		lastDiscoveredTile = cave.getDeck().getTile();
-		path.add(getLastDiscoveredTile());
-		getLastDiscoveredTile().explore(explorers);
+		lastDiscoveredTile = this.cave.getDeck().getTile();
+		if (lastDiscoveredTile instanceof Hazard) {
+			for (Tile tile : this.getPath()) {
+				if (tile.getType().toString().equals(this.lastDiscoveredTile.getType().toString())) {
+					unsafe = true;
+					break;
+				}
+			}
+		}
+		this.path.add(this.getLastDiscoveredTile());
+		lastDiscoveredTile.explore(explorers);
 	}
 
 	public void returnToCamp(List<Explorer> explorers) {
-		for (Tile tile : getPath()) {
+		this.getPath().forEach((tile) -> {
 			tile.explore(explorers);
-		}
-		for (Explorer explorer : explorers) {
+		});
+		explorers.forEach((explorer) -> {
 			explorer.reachCamp();
-		}
+		});
 	}
 
-	void addTileToPath(Treasure treasure) {
-		path.add(treasure);
+	void addTileToPath(Tile tile) {
+		path.add(tile);
 	}
 
 	/**
