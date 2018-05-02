@@ -13,6 +13,25 @@ public class Treasure implements Tile {
 	private int rubies;
 
 	/**
+	 * Creates a new treasure tile with a defined number.
+	 *
+	 * @param rubies The number of rubies on the newly-genereated tile.
+	 */
+	public Treasure(int rubies) {
+		this.rubies = rubies;
+		this.initNbRubies = rubies;
+	}
+
+	/**
+	 * Creates a treasure tile with a random amount of rubies, between 1 and 15.
+	 */
+	public Treasure() {
+		int random = (int) (Math.random() * 14) + 1;
+		this.rubies = random;
+		this.initNbRubies = random;
+	}
+
+	/**
 	 * Returns the amount of rubies standing on the treasure tile.
 	 *
 	 * @return The amount of rubies on the tile.
@@ -34,24 +53,6 @@ public class Treasure implements Tile {
 		return this.initNbRubies;
 	}
 
-	/**
-	 * Creates a new treasure tile with a defined number.
-	 *
-	 * @param rubies The number of rubies on the newly-genereated tile.
-	 */
-	public Treasure(int rubies) {
-		this.rubies = rubies;
-		this.initNbRubies = rubies;
-	}
-
-	/**
-	 * Creates a treasure tile with a random amount of rubies, between 1 and 15.
-	 */
-	public Treasure() {
-		int random = (int) Math.round((Math.random() * 14) + 1);
-		this.rubies = random;
-		this.initNbRubies = random;
-	}
 
 	/**
 	 * Makes the explorers explore the tile and share the rubies.
@@ -77,8 +78,14 @@ public class Treasure implements Tile {
 		this.rubies = this.initNbRubies;
 	}
 
+	/**
+	 * Doesn't do anything for the Treasure class. Only valid for the Hazard class.
+	 *
+	 * @return Retruns null.
+	 */
 	@Override
 	public HazardType getType() {
 		return null;
 	}
+
 }

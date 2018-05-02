@@ -47,7 +47,7 @@ public class Bag {
 	/**
 	 * Checks if a bag is a bag.
 	 *
-	 * @param o An empty object.
+	 * @param o An object.
 	 * @return True if the bag isn't empty, is an object and if is equals to itself.
 	 */
 	@Override

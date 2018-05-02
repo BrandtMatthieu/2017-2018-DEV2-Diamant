@@ -12,7 +12,6 @@ public interface Tile {
 	 */
 	int getRubies();
 
-
 	/**
 	 * Renvoit The amount of rubies on the tile when it has been created.
 	 *
@@ -25,7 +24,10 @@ public interface Tile {
 	 */
 	void restore();
 
+	/**
+	 * Returns the type of Hazard it is.
+	 *
+	 * @return
+	 */
 	HazardType getType();
-
-
 }

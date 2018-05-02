@@ -15,6 +15,25 @@ public class Cave {
 	private Deck deck;
 
 	/**
+	 * Creates a new cave, a new entrance and a new deck.
+	 */
+	public Cave() {
+		nbExploredEntrance = 0;
+		deck = new Deck();
+	}
+
+	/**
+	 * Creates a new cave just to get the tiles from this cave.
+	 *
+	 * @param i A parameter just to create another different contructor to have the tiles with the cave.
+	 */
+	public Cave(int i) {
+		nbExploredEntrance = 0;
+		deck = new Deck();
+		currentEntrance = new CaveEntrance(this);
+	}
+
+	/**
 	 * Returns the number of explored cave entrances.
 	 *
 	 * @return the number of explored cave entrances.
@@ -30,20 +49,6 @@ public class Cave {
 	 */
 	public CaveEntrance getCurrentEntrance() {
 		return currentEntrance;
-	}
-
-	/**
-	 * Creates a new cave, a new entrance and a new deck.
-	 */
-	public Cave() {
-		nbExploredEntrance = 0;
-		deck = new Deck();
-	}
-
-	public Cave(int i) {
-		nbExploredEntrance = 0;
-		deck = new Deck();
-		currentEntrance = new CaveEntrance(this);
 	}
 
 	/**
@@ -71,24 +76,19 @@ public class Cave {
 	 *                       5 entrances have already been opened.
 	 */
 	public void openNewEntrance() {
-		if (currentEntrance == null) {
-			currentEntrance = new CaveEntrance(this);
-			nbExploredEntrance++;
+		if (((!hasNewEntranceToExplore()) || (!currentEntrance.isLockedOut())) && currentEntrance != null) {
+			throw new GameException("Cannot open a new cave entrance.\nEither 5 entrances have already been opened or the exploring phase is still not finished for some explorers");
 		} else {
-			if ((!hasNewEntranceToExplore()) || (!currentEntrance.isLockedOut())) {
-				throw new GameException("Cannot open a new cave entrance.\nEither 5 entrances have already been opened or the exploring phase is still not finished for some explorers");
-			} else {
-				currentEntrance = new CaveEntrance(this);
-				nbExploredEntrance++;
-			}
+			currentEntrance = new CaveEntrance(this);
 		}
 	}
 
 	/**
-	 * Locks the entry of the current cave entrance.
+	 * Locks the entry of the current cave entrance and increments the amount of explored entrances.
 	 */
 	public void lockOutCurrentEntrance() {
 		this.currentEntrance.lockOut();
+		nbExploredEntrance++;
 	}
 
 	/**

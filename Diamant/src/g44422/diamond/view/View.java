@@ -122,6 +122,11 @@ public class View {
 		}
 	}
 
+	/**
+	 * Prints the current cave on the screen.
+	 * Prints the state of the explorers.
+	 * Prints the amount each explorer has.
+	 */
 	public void turnResumeDisplay() {
 		// Top
 		System.out.print("        ╔");
@@ -133,25 +138,32 @@ public class View {
 			System.out.print("║           ║");
 		}
 
-		// Main info
+		// Middle
+		// This is not made to be human-readible
+		// This just prints lines and infos about what there is in the cave drawing.
 		System.out.print("\n Sortie ");
+<<<<<<< Updated upstream:Diamant/src/g44422/diamond/view/View.java
 		for (int i = 0; i < game.getCave().getCurrentEntrance().getPath().size() - 1; i++) {
 			if (game.getCave().getCurrentEntrance().getPath().get(i) instanceof Hazard) {
 
+=======
+		for (int i = 0; i < game.getCave().getCurrentEntrance().getPath().size() - 1; i++) { // For each tile in the path
+			if (game.getCave().getCurrentEntrance().getPath().get(i) instanceof Hazard) { // If it is a Hazard
+>>>>>>> Stashed changes:src/g44422/diamond/view/View.java
 				for (int j = 0; j < (13 - game.getCave().getCurrentEntrance().getPath().get(i).getType().toString().length()) / 2; j++) {
-					System.out.print(" ");
+					System.out.print(" "); // Print spaces.
 				}
-				System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getType().toString());
+				System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getType().toString()); // Print the Hazard
 				for (int k = 0; k < ((13 - game.getCave().getCurrentEntrance().getPath().get(i).getType().toString().length() / 2) - game.getCave().getCurrentEntrance().getPath().get(i).getType().toString().length()); k++) {
-					System.out.print(" ");
+					System.out.print(" "); // Print spaces.
 				}
-			} else {
-				System.out.print("   ");
+			} else { // If it is a treasure
+				System.out.print("   "); // Print spaces.
 				if (String.valueOf(game.getCave().getCurrentEntrance().getPath().get(i).getRubies()).length() == 1) {
-					System.out.print(" ");
+					System.out.print(" "); // Print space of number shorter than 2 charactres.
 				}
-				System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getRubies());
-				System.out.print(" rubis  ");
+				System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getRubies()); // Prints the amount of rubies.
+				System.out.print(" rubis  "); // Prints "rubis".
 			}
 		}
 		if (game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1) instanceof Hazard) {
@@ -171,6 +183,26 @@ public class View {
 			System.out.print(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getInitNbRubies());
 			System.out.print(" rubis  ");
 		}
+<<<<<<< Updated upstream:Diamant/src/g44422/diamond/view/View.java
+		if (game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1) instanceof Hazard) {
+
+			for (int j = 0; j < (13 - game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString().length()) / 2; j++) {
+				System.out.print(" ");
+			}
+			System.out.print(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString());
+			for (int k = 0; k < ((13 - game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString().length() / 2) - game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString().length()); k++) {
+				System.out.print(" ");
+			}
+		} else {
+			System.out.print("   ");
+			if (String.valueOf(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getInitNbRubies()).length() == 1) {
+				System.out.print(" ");
+			}
+			System.out.print(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getInitNbRubies());
+			System.out.print(" rubis  ");
+		}
+=======
+>>>>>>> Stashed changes:src/g44422/diamond/view/View.java
 
 		System.out.print("       ?     ║\n");
 
@@ -188,18 +220,27 @@ public class View {
 			System.out.print("╩═══════════╩");
 		}
 		System.out.println("\n");
-		System.out.println("Etat  -  Explorateur");
-		System.out.println("====================");
+		System.out.println("Etat  -  Explorateur  -  Nb. Rubis");
+		System.out.println("==================================");
 
 		game.getExplorers().forEach((explorer) -> {
-			System.out.println(explorer.getState() + "  -  " + explorer.getPseudonym());
+			System.out.println(explorer.getState() + "  -  " + explorer.getPseudonym() + "  -  " + explorer.getFortune() + " rubis");
 		});
 	}
 
+	/**
+	 * Displays a friendly message when the explorers have run away.
+	 */
 	public void displayRunAway() {
 		System.out.println("Vous êtes tombé sur une deuxième carte \"Danger\" d'un même type.\nVous fuyez en dehors de la grotte en abandonnant votre butin à l'intérieur.\n\nVous êtes tous de retour au camp.");
 	}
 
+<<<<<<< Updated upstream:Diamant/src/g44422/diamond/view/View.java
+=======
+	/**
+	 * Display a friendly message telling the explorers are now exploring a new cave.
+	 */
+>>>>>>> Stashed changes:src/g44422/diamond/view/View.java
 	public void startNewExplorationPhase() {
 		System.out.println("\nVous prénétrez dans une nouvelle entrée de la grotte.");
 	}

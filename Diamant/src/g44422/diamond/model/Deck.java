@@ -18,18 +18,16 @@ public class Deck {
 	 */
 	public Deck() {
 		tiles = new ArrayList<>();
-		for (int i = 1; i < 6; i++) {
+		for (int i = 1; i < 6; i++) { // Adds treasures from 1 to 5
 			tiles.add(new Treasure(i));
 		}
-		for (int i = 5; i < 18; i = i + 2) {
+		for (int i = 5; i < 18; i = i + 2) { // Adds the odd treasures from 5 to 17
 			tiles.add(new Treasure(i));
-			if (i == 7 || i == 11) {
-				tiles.add(new Treasure(i));
-			} else if (i == 13) {
-				tiles.add(new Treasure(14));
-			}
 		}
-		for (HazardType hazard : HazardType.values()) {
+		tiles.add(new Treasure(7));
+		tiles.add(new Treasure(11));
+		tiles.add(new Treasure(14));
+		for (HazardType hazard : HazardType.values()) { // Adds all the Hazards 3 times.
 			for (int i = 0; i < 3; i++) {
 				tiles.add(new Hazard(hazard));
 			}
@@ -42,8 +40,8 @@ public class Deck {
 	 * @return One randome tile of the deck.
 	 */
 	public Tile getTile() {
-		Tile toReturn = tiles.get(Math.round((int) (Math.random() * (tiles.size() - 1))));
-		tiles.remove(toReturn);
+		Tile toReturn = tiles.get((int) (Math.random() * tiles.size()));
+		tiles.remove(toReturn); // remove() doesn't return anything
 		return toReturn;
 	}
 
