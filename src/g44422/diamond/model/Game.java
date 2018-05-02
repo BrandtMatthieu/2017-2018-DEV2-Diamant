@@ -34,10 +34,10 @@ public class Game implements Model {
 	 */
 	@Override
 	public void addExplorer(Explorer explorer) {
-		if (!isItPossibleToAddExplorer()) {
-			throw new GameException("Not possible to add any new explorer to the game.");
-		} else {
+		if (isItPossibleToAddExplorer()) {
 			explorers.add(explorer);
+		} else {
+			throw new GameException("Not possible to add any new explorer to the game.");
 		}
 	}
 
@@ -103,10 +103,10 @@ public class Game implements Model {
 	 */
 	@Override
 	public void handleExplorerDecisionToLeave(Explorer explorer) {
-		if (!getExploringExplorers().contains(explorer)) {
-			throw new GameException("The explorer " + explorer.toString() + " does not makes part of all the exploring explorers in this game instance.");
-		} else {
+		if (getExploringExplorers().contains(explorer)) {
 			explorer.takeDecisionToLeave();
+		} else {
+			throw new GameException("The explorer " + explorer.toString() + " does not makes part of all the exploring explorers in this game instance.");
 		}
 	}
 
@@ -175,7 +175,6 @@ public class Game implements Model {
 	 */
 	@Override
 	public void makeExplorersLeave() {
-		/* TODO */
 		List<Explorer> leavingExplorers;
 		leavingExplorers = new ArrayList<>();
 		explorers.stream().filter((explorer) -> (explorer.getState() == LEAVING)).forEachOrdered((explorer) -> {
@@ -201,16 +200,9 @@ public class Game implements Model {
 	 */
 	@Override
 	public void endExplorationPhase() {
-		if (this.getCave().getCurrentEntrance().isUnsafe()) {
-			for (int i = 0; i < this.getCave().getCurrentEntrance().getPath().size() - 2; i++) {
-				this.getCave().getCurrentEntrance().getPath().get(i).restore();
-			}
-			/* TODO  Clear the deck */
-		} else {
-			this.cave.getCurrentEntrance().getPath().stream().filter((tile) -> (tile instanceof Treasure)).forEachOrdered((tile) -> {
-				this.cave.getCurrentEntrance().getDeck().putBack(tile);
-			});
-		}
+		this.cave.getCurrentEntrance().getPath().stream().filter((tile) -> (tile instanceof Treasure)).forEachOrdered((tile) -> {
+			this.cave.getCurrentEntrance().getDeck().putBack(tile);
+		});
 		this.cave.lockOutCurrentEntrance();
 	}
 
@@ -228,7 +220,7 @@ public class Game implements Model {
 	/**
 	 * Checks if the exporers have left the cave entrance because it's unsafe.
 	 *
-	 * @return Returns true if the exporers have left the cave entrance because it's unsafe.
+	 * @return True if the exporers have left the cave entrance because it's unsafe.
 	 */
 	@Override
 	public boolean isExplorationPhaseAborted() {
