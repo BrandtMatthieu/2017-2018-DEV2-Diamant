@@ -10,92 +10,97 @@ import java.util.List;
  */
 public class Hazard implements Tile {
 
-	private HazardType type;
+    private HazardType type;
 
-	private boolean exlorersEscapeReason;
+    private boolean exlorersEscapeReason;
 
-	public Hazard(HazardType type) {
-		this.type = type;
-	}
+    /**
+     * Returns the type of danger of the tile.
+     *
+     * @return the type of danger of the tile.
+     */
+    @Override
+    public HazardType getType() {
+        return type;
+    }
 
-	/**
-	 * Returns the type of danger of the tile.
-	 *
-	 * @return the type of danger of the tile.
-	 */
-	@Override
-	public HazardType getType() {
-		return type;
-	}
+    /**
+     * Returns the reason why the explorers escaped.
+     *
+     * @return The reason why the explorers escaped.
+     */
+    public boolean isExlorersEscapeReason() {
+        return exlorersEscapeReason;
+    }
 
-	/**
-	 * Returns the reason why the explorers escaped.
-	 *
-	 * @return The reason why the explorers escaped.
-	 */
-	public boolean isExlorersEscapeReason() {
-		return exlorersEscapeReason;
-	}
+    /**
+     * Gives a true value to the Hazard tiles.
+     */
+    public void escape() {
+        this.exlorersEscapeReason = true;
+    }
 
-	/**
-	 * Gives a true value to the Hazard tiles.
-	 */
-	public void escape() {
-		this.exlorersEscapeReason = true;
-	}
+    /**
+     * Doesn't do anything
+     *
+     * @param explorers The explorers who want to explore the tile.
+     */
+    public void explore(List<Explorer> explorers) {
+    }
 
-	/**
-	 * Doesn't do anything
-	 *
-	 * @param explorers The explorers who want to explore the tile.
-	 */
-	public void explore(List<Explorer> explorers) {
-	}
+    /**
+     * Doesn't do anyhting on Hazard tiles.
+     *
+     * @return Doesn't return anything on Hazard tiles (0).
+     */
+    @Override
+    public int getInitNbRubies() {
+        return 0;
+    }
 
-	/**
-	 * Doesn't do anyhting on Hazard tiles.
-	 */
-	@Override
-	public void restore() {
+    /**
+     * Doesn't do anyhting on Hazard tiles.
+     *
+     * @return Doesn't return anything on Hazard tiles (0).
+     */
+    public int getNbRubies() {
+        return 0;
+    }
 
-	}
+    /**
+     * Doesn't do anyhting on Hazard tiles.
+     *
+     * @return Doesn't return anything on Hazard tiles (0).
+     */
+    @Override
+    public int getRubies() {
+        return 0;
+    }
 
-	/**
-	 * Doesn't do anyhting on Hazard tiles.
-	 *
-	 * @return Doesn't return anything on Hazard tiles (0).
-	 */
-	public int getNbRubies() {
-		return 0;
-	}
+    /**
+     * Creates a new custom Hazard tile based on the parameter.
+     *
+     * @param type The type of hazard for the new hazard tile.
+     */
+    public Hazard(HazardType type) {
+        this.type = type;
+    }
 
-	/**
-	 * Doesn't do anyhting on Hazard tiles.
-	 *
-	 * @return Doesn't return anything on Hazard tiles (0).
-	 */
-	@Override
-	public int getInitNbRubies() {
-		return 0;
-	}
+    /**
+     * Doesn't do anyhting on Hazard tiles.
+     */
+    @Override
+    public void restore() {
 
-	/**
-	 * Doesn't do anyhting on Hazard tiles.
-	 *
-	 * @return Doesn't return anything on Hazard tiles (0).
-	 */
-	@Override
-	public int getRubies() {
-		return 0;
-	}
+    }
 
-	/**
-	 * Return s the type of the tile.
-	 *
-	 * @return Returns the type of the Hazard tile.
-	 */
-	@Override
-	public String toString() {
-		return "" + type;
-	}
+    /**
+     * Return s the type of the tile.
+     *
+     * @return Returns the type of the Hazard tile.
+     */
+    @Override
+    public String toString() {
+        return "" + type;
+    }
 }

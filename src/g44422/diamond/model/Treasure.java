@@ -10,82 +10,81 @@ import java.util.List;
  */
 public class Treasure implements Tile {
 
-	private int rubies;
+    private int rubies;
 
-	/**
-	 * Creates a new treasure tile with a defined number.
-	 *
-	 * @param rubies The number of rubies on the newly-genereated tile.
-	 */
-	public Treasure(int rubies) {
-		this.rubies = rubies;
-		this.initNbRubies = rubies;
-	}
+    private final int initNbRubies;
 
-	/**
-	 * Creates a treasure tile with a random amount of rubies, between 1 and 15.
-	 */
-	public Treasure() {
-		int random = (int) (Math.random() * 14) + 1;
-		this.rubies = random;
-		this.initNbRubies = random;
-	}
+    /**
+     * Creates a new treasure tile with a defined number.
+     *
+     * @param rubies The number of rubies on the newly-genereated tile.
+     */
+    public Treasure(int rubies) {
+        this.rubies = rubies;
+        this.initNbRubies = rubies;
+    }
 
-	/**
-	 * Returns the amount of rubies standing on the treasure tile.
-	 *
-	 * @return The amount of rubies on the tile.
-	 */
-	@Override
-	public int getRubies() {
-		return this.rubies;
-	}
+    /**
+     * Creates a treasure tile with a random amount of rubies, between 1 and 15.
+     */
+    public Treasure() {
+        int random = (int) (Math.random() * 14) + 1;
+        this.rubies = random;
+        this.initNbRubies = random;
+    }
 
-	private final int initNbRubies;
+    /**
+     * Returns the amount of rubies standing on the treasure tile.
+     *
+     * @return The amount of rubies on the tile.
+     */
+    @Override
+    public int getRubies() {
+        return this.rubies;
+    }
 
-	/**
-	 * Renvoit The amount of rubies on the tile when it has been created.
-	 *
-	 * @return The amount of rubies that stood on the tile when it was created.
-	 */
-	@Override
-	public int getInitNbRubies() {
-		return this.initNbRubies;
-	}
+    /**
+     * Renvoit The amount of rubies on the tile when it has been created.
+     *
+     * @return The amount of rubies that stood on the tile when it was created.
+     */
+    @Override
+    public int getInitNbRubies() {
+        return this.initNbRubies;
+    }
 
 
-	/**
-	 * Makes the explorers explore the tile and share the rubies.
-	 *
-	 * @param explorers All the explorers who wanna explore the tile.
-	 */
-	@Override
-	public void explore(List<Explorer> explorers) {
-		if (!explorers.isEmpty()) {
-			int rubiesToShare = this.rubies / explorers.size();
-			explorers.forEach((explorer) -> {
-				explorer.addToBag(rubiesToShare);
-			});
-			this.rubies = this.rubies % explorers.size();
-		}
-	}
+    /**
+     * Makes the explorers explore the tile and share the rubies.
+     *
+     * @param explorers All the explorers who wanna explore the tile.
+     */
+    @Override
+    public void explore(List<Explorer> explorers) {
+        if (!explorers.isEmpty()) {
+            int rubiesToShare = this.rubies / explorers.size();
+            explorers.forEach((explorer) -> {
+                explorer.addToBag(rubiesToShare);
+            });
+            this.rubies = this.rubies % explorers.size();
+        }
+    }
 
-	/**
-	 * Restore the original amount of rubies on the tile.
-	 */
-	@Override
-	public void restore() {
-		this.rubies = this.initNbRubies;
-	}
+    /**
+     * Doesn't do anything for the Treasure class. Only valid for the Hazard class.
+     *
+     * @return Retruns null.
+     */
+    public HazardType getType() {
+        return null;
+    }
 
-	/**
-	 * Doesn't do anything for the Treasure class. Only valid for the Hazard class.
-	 *
-	 * @return Retruns null.
-	 */
-
-	public HazardType getType() {
-		return null;
-	}
+    /**
+     * Restore the original amount of rubies on the tile.
+     */
+    @Override
+    public void restore() {
+        this.rubies = this.initNbRubies;
+    }
 
 }

@@ -7,13 +7,13 @@ package g44422.diamond.model;
  * @version 0.1
  */
 public enum HazardType {
-	STONE_BALL,
+    STONE_BALL,
 
-	GIANT_SPIDERS,
+    GIANT_SPIDERS,
 
-	SNAKES,
+    SNAKES,
 
-	BATTERING_RAM,
+    BATTERING_RAM,
 
-	LAVA_FIELD
+    LAVA_FIELD
 }
