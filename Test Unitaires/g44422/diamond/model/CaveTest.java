@@ -30,6 +30,7 @@ public class CaveTest {
 	public void nbDiscoveredEntrance() {
 		Game game = new Game();
 		game.startNewExplorationPhase();
+		game.endExplorationPhase();
 		assertEquals(1, game.getCave().getNbExploredEntrance());
 	}
 

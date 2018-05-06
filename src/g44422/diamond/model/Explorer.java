@@ -58,10 +58,10 @@ public class Explorer {
     /**
      * Adds the amount of rubbies in the explorer's bag.
      *
-     * @param nbRubies The amound of rubies to add in the explorer's bag.
+     * @param gem The amound of rubies to add in the explorer's bag.
      */
-    public void addToBag(int nbRubies) {
-        this.bag.addRubies(nbRubies);
+    public void addToBag(Gem gem) {
+        this.bag.addGem(gem);
     }
 
     /**
@@ -88,7 +88,7 @@ public class Explorer {
      * @return The amount of rubies a player has in it's bag.
      */
     public int getFortune() {
-        return this.getBag().getNbRubies();
+        return this.getBag().getValue();
     }
 
     /**

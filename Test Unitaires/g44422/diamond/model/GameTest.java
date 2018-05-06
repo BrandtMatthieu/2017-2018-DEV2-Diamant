@@ -60,10 +60,12 @@ public class GameTest {
 		Explorer e2 = new Explorer("pbt");
 		game.addExplorer(e1);
 		game.addExplorer(e2);
+		game.startNewExplorationPhase();
 		game.handleExplorerDecisionToLeave(e1);
+		game.endExplorationPhase();
 		game.moveForward();
-		if (game.getCave().getCurrentEntrance().getLastDiscoveredTile() instanceof Treasure && game.getCave().getCurrentEntrance().getLastDiscoveredTile().getRubies() > 0) {
-			assertTrue(e2.getBag().getNbRubies() > 0);
+		if (game.getCave().getCurrentEntrance().getLastDiscoveredTile() instanceof Treasure && game.getCave().getCurrentEntrance().getLastDiscoveredTile().getGems().size() > 0) {
+			assertTrue(e2.getBag().getValue() > 0);
 		} else {
 			assertTrue(true);
 		}
@@ -76,9 +78,11 @@ public class GameTest {
 		Explorer e2 = new Explorer("pbt");
 		game.addExplorer(e1);
 		game.addExplorer(e2);
+		game.startNewExplorationPhase();
 		game.handleExplorerDecisionToLeave(e1);
+		game.endExplorationPhase();
 		game.moveForward();
-		assertTrue(e1.getBag().getNbRubies() == 0);
+		assertTrue(e1.getBag().getValue() == 0);
 	}
 
 	@Test

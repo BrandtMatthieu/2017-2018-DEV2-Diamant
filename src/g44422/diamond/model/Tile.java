@@ -10,14 +10,14 @@ public interface Tile {
      *
      * @return The amount of rubies that stood on the tile when it was created.
      */
-    int getInitNbRubies();
+    int getInitNbGems();
 
     /**
      * Returns the amount of rubies standing on the treasure tile.
      *
      * @return The amount of rubies on the tile.
      */
-    int getRubies();
+    List<Gem> getGems();
 
     /**
      * Returns the type of Hazard it is.
@@ -30,4 +30,13 @@ public interface Tile {
      * Restore the original amount of rubies on the tile.
      */
     void restore();
+
+
+    /**
+     * Returns true if the relic can be taken by the explorer.
+     *
+     * @param explorers The explorers exploring the relic.
+     * @return True if the explorer is alone and leaving.
+     */
+    boolean canBeTaken(List<Explorer> explorers);
 }

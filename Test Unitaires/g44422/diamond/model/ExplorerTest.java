@@ -28,22 +28,28 @@ public class ExplorerTest {
 	@Test
 	public void getBagBeforAddingToBag() {
 		Explorer explorer = new Explorer("Sdr");
-		assertEquals(0, explorer.getBag().getNbRubies());
+		assertEquals(0, explorer.getBag().getValue());
 	}
 
 	@Test
 	public void addToBag1Times() {
 		Explorer explorer = new Explorer("Sdr");
-		explorer.addToBag(42);
-		assertEquals(42, explorer.getBag().getNbRubies());
+		for(int i=0;i<42;i++) {
+			explorer.addToBag(Gem.RUBY);
+		}
+		assertEquals(42, explorer.getBag().getValue());
 	}
 
 	@Test
 	public void addToBag2Times() {
 		Explorer explorer = new Explorer("Sdr");
-		explorer.addToBag(40);
-		explorer.addToBag(2);
-		assertEquals(42, explorer.getBag().getNbRubies());
+		for(int i=0;i<40;i++) {
+			explorer.addToBag(Gem.RUBY);
+		}
+		for(int i=0;i<2;i++) {
+			explorer.addToBag(Gem.RUBY);
+		}
+		assertEquals(42, explorer.getBag().getValue());
 	}
 
 	@Test
@@ -77,13 +83,15 @@ public class ExplorerTest {
 	@Test
 	public void getFortuneEqualsGetBagGetNbRubiesWithEmptyBag() {
 		Explorer explorer = new Explorer("44422");
-		assertEquals(explorer.getBag().getNbRubies(), explorer.getFortune());
+		assertEquals(explorer.getBag().getValue(), explorer.getFortune());
 	}
 
 	@Test
 	public void getFortuneEqualsGetBagGetNbRubiesWithFullBag() {
 		Explorer explorer = new Explorer("44422");
-		explorer.addToBag(42);
-		assertEquals(explorer.getBag().getNbRubies(), explorer.getFortune());
+		for(int i=0;i<42;i++) {
+			explorer.addToBag(Gem.RUBY);
+		}
+		assertEquals(explorer.getBag().getValue(), explorer.getFortune());
 	}
 }

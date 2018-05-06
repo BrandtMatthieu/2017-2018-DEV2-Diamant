@@ -70,7 +70,7 @@ public class Game implements Model {
     public void endExplorationPhase() {
         if (this.getCave().getCurrentEntrance().isUnsafe()) {
             for (int i = 0; i < this.getCave().getCurrentEntrance().getPath().size() - 1; i++) {
-                if (this.getCave().getCurrentEntrance().getPath().get(i) instanceof Hazard && !(((Hazard) (this.getCave().getCurrentEntrance().getPath().get(i))).isExlorersEscapeReason())) { // If Hazard and didn't made the explorers fleed, then restore the tile
+                if (this.getCave().getCurrentEntrance().getPath().get(i) instanceof Hazard && !(((Hazard) (this.getCave().getCurrentEntrance().getPath().get(i))).isExplorersEscapeReason())) { // If Hazard and didn't made the explorers fleed, then restore the tile
                     this.getCave().getCurrentEntrance().getPath().get(i).restore();
                 }
             }
@@ -193,7 +193,6 @@ public class Game implements Model {
      */
     @Override
     public void makeExplorersLeave() {
-        /* TODO */
         List<Explorer> leavingExplorers;
         leavingExplorers = new ArrayList<>();
         explorers.stream().filter((explorer) -> (explorer.getState() == LEAVING)).forEachOrdered((explorer) -> {

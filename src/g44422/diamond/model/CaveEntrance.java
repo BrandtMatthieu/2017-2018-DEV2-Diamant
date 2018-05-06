@@ -143,9 +143,12 @@ public class CaveEntrance extends Cave {
      * @param explorers All the exploring explorers willing to go back to the camp.
      */
     public void returnToCamp(List<Explorer> explorers) {
-        this.getPath().forEach((tile) -> {
-            tile.explore(explorers);
-        });
+        for(int i=0;i<this.getPath().size()-1;i++) {
+            this.getPath().get(i).explore(explorers);
+            if(this.getPath().get(i).canBeTaken(explorers)) {
+                this.getPath().remove(i);
+            }
+        }
         explorers.forEach((explorer) -> {
             explorer.reachCamp();
         });

@@ -98,7 +98,7 @@ public class View {
 		if (game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1) instanceof Hazard) {
 			System.out.println("Pas de chance, vous tombez sur une carte \"Danger\". Le danger est de type " + game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString() + ".");
 		} else {
-			System.out.println("Vous découvrez une tuile avec " + game.getCave().getCurrentEntrance().getLastDiscoveredTile().getInitNbRubies() + " rubis.");
+			System.out.println("Vous découvrez une tuile avec " + game.getCave().getCurrentEntrance().getLastDiscoveredTile().getInitNbGems() + " rubis.");
 		}
 	}
 
@@ -153,10 +153,10 @@ public class View {
 				}
 			} else { // If it is a treasure
 				System.out.print("   "); // Print spaces.
-				if (String.valueOf(game.getCave().getCurrentEntrance().getPath().get(i).getRubies()).length() == 1) {
+				if (game.getCave().getCurrentEntrance().getPath().get(i).getGems().size() < 10) {
 					System.out.print(" "); // Print space of number shorter than 2 charactres.
 				}
-				System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getRubies()); // Prints the amount of rubies.
+				System.out.print(game.getCave().getCurrentEntrance().getPath().get(i).getGems().size()); // Prints the amount of rubies.
 				System.out.print(" rubis  "); // Prints "rubis".
 			}
 		}
@@ -171,10 +171,10 @@ public class View {
 			}
 		} else {
 			System.out.print("   ");
-			if (String.valueOf(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getInitNbRubies()).length() == 1) {
+			if (String.valueOf(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getInitNbGems()).length() == 1) {
 				System.out.print(" ");
 			}
-			System.out.print(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getInitNbRubies());
+			System.out.print(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getInitNbGems());
 			System.out.print(" rubis  ");
 		}
 		System.out.print("       ?     ║\n");

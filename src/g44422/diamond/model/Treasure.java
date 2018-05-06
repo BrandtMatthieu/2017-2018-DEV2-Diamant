@@ -1,5 +1,6 @@
 package g44422.diamond.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,9 +11,9 @@ import java.util.List;
  */
 public class Treasure implements Tile {
 
-    private int rubies;
+    private List<Gem> gems;
 
-    private final int initNbRubies;
+    private final int initNbGems;
 
     /**
      * Creates a new treasure tile with a defined number.
@@ -20,17 +21,23 @@ public class Treasure implements Tile {
      * @param rubies The number of rubies on the newly-genereated tile.
      */
     public Treasure(int rubies) {
-        this.rubies = rubies;
-        this.initNbRubies = rubies;
+        gems = new ArrayList<Gem>();
+        for (int i = 0; i < rubies; i++) {
+            this.gems.add(Gem.RUBY);
+        }
+        this.initNbGems = rubies;
     }
 
     /**
      * Creates a treasure tile with a random amount of rubies, between 1 and 15.
      */
     public Treasure() {
+        gems = new ArrayList<Gem>();
         int random = (int) (Math.random() * 14) + 1;
-        this.rubies = random;
-        this.initNbRubies = random;
+        for (int i = 0; i < random; i++) {
+            this.gems.add(Gem.RUBY);
+        }
+        this.initNbGems = random;
     }
 
     /**
@@ -38,9 +45,8 @@ public class Treasure implements Tile {
      *
      * @return The amount of rubies on the tile.
      */
-    @Override
-    public int getRubies() {
-        return this.rubies;
+    public List<Gem> getGems() {
+        return this.gems;
     }
 
     /**
@@ -49,8 +55,8 @@ public class Treasure implements Tile {
      * @return The amount of rubies that stood on the tile when it was created.
      */
     @Override
-    public int getInitNbRubies() {
-        return this.initNbRubies;
+    public int getInitNbGems() {
+        return this.initNbGems;
     }
 
 
@@ -62,11 +68,15 @@ public class Treasure implements Tile {
     @Override
     public void explore(List<Explorer> explorers) {
         if (!explorers.isEmpty()) {
-            int rubiesToShare = this.rubies / explorers.size();
+            int rubiesToShare = Math.floorDiv(this.gems.size(), explorers.size());
             explorers.forEach((explorer) -> {
-                explorer.addToBag(rubiesToShare);
+                for(int i=0;i<rubiesToShare;i++) {
+                    explorer.addToBag(Gem.RUBY);
+                }
             });
-            this.rubies = this.rubies % explorers.size();
+            for (int i = 0; i < rubiesToShare * explorers.size(); i++) {
+                this.gems.remove(0);
+            }
         }
     }
 
@@ -84,7 +94,21 @@ public class Treasure implements Tile {
      */
     @Override
     public void restore() {
-        this.rubies = this.initNbRubies;
+        this.gems.clear();
+        for (int i = 0; i < this.initNbGems; i++) {
+            this.gems.add(Gem.RUBY);
+        }
+    }
+
+    /**
+     * Returns true if the relic can be taken by the explorer.
+     *
+     * @param explorers The explorers exploring the relic.
+     * @return True if the explorer is alone and leaving.
+     */
+    @Override
+    public boolean canBeTaken(List<Explorer> explorers) {
+        return false;
     }
 
 }

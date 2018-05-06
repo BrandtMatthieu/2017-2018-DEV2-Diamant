@@ -1,5 +1,7 @@
 package g44422.diamond.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -10,13 +12,13 @@ import java.util.Objects;
  */
 public class Bag {
 
-    private int nbRubies;
+    private List<Gem> gems;
 
     /**
      * Creates a new empty bag for the player.
      */
     public Bag() {
-        this.nbRubies = 0;
+        this.gems = new ArrayList<Gem>();
     }
 
     /**
@@ -24,17 +26,21 @@ public class Bag {
      *
      * @return The amound of rubbies the explorer have.
      */
-    public int getNbRubies() {
-        return this.nbRubies;
+    public int getValue() {
+        int sum = 0;
+        for (Gem gem : gems) {
+            sum = sum + gem.getValue();
+        }
+        return sum;
     }
 
     /**
      * Adds the specifies amound of rubbies to a player's bag.
      *
-     * @param nbRubies The amount of rubbies to add.
+     * @param gem The amount of rubbies to add.
      */
-    public void addRubies(int nbRubies) {
-        this.nbRubies = this.nbRubies + nbRubies;
+    public void addGem(Gem gem) {
+        this.gems.add(gem);
     }
 
     /**
@@ -52,7 +58,7 @@ public class Bag {
             return false;
         }
         Bag bag = (Bag) o;
-        return nbRubies == bag.nbRubies;
+        return this.getValue() == bag.getValue();
     }
 
     /**
@@ -62,14 +68,14 @@ public class Bag {
      */
     @Override
     public int hashCode() {
-        return Objects.hash(nbRubies);
+        return Objects.hash(gems);
     }
 
     /**
      * Resets the player's bag when he falls into a trap.
      */
     public void loseContent() {
-        this.nbRubies = 0;
+        this.gems.clear();
     }
 
 }

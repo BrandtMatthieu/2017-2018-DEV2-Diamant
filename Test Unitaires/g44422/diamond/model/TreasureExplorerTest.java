@@ -12,7 +12,7 @@ public class TreasureExplorerTest {
 		Explorer e1 = new Explorer("e1");
 		Treasure treasure = new Treasure(4);
 		treasure.explore(Arrays.asList(e1));
-		assertEquals(e1.getBag().getNbRubies(), 4);
+		assertEquals(e1.getBag().getValue(), 4);
 	}
 
 	@Test
@@ -21,6 +21,6 @@ public class TreasureExplorerTest {
 		Explorer e2 = new Explorer("e2");
 		Treasure treasure = new Treasure(5);
 		treasure.explore(Arrays.asList(e1, e2));
-		assertEquals(2, e1.getBag().getNbRubies());
+		assertEquals(2, e1.getBag().getValue());
 	}
 }

@@ -1,5 +1,6 @@
 package g44422.diamond.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class Hazard implements Tile {
 
     private HazardType type;
 
-    private boolean exlorersEscapeReason;
+    private boolean explorersEscapeReason;
 
     /**
      * Returns the type of danger of the tile.
@@ -29,15 +30,15 @@ public class Hazard implements Tile {
      *
      * @return The reason why the explorers escaped.
      */
-    public boolean isExlorersEscapeReason() {
-        return exlorersEscapeReason;
+    public boolean isExplorersEscapeReason() {
+        return explorersEscapeReason;
     }
 
     /**
      * Gives a true value to the Hazard tiles.
      */
     public void escape() {
-        this.exlorersEscapeReason = true;
+        this.explorersEscapeReason = true;
     }
 
     /**
@@ -45,6 +46,7 @@ public class Hazard implements Tile {
      *
      * @param explorers The explorers who want to explore the tile.
      */
+    @Override
     public void explore(List<Explorer> explorers) {
     }
 
@@ -54,7 +56,7 @@ public class Hazard implements Tile {
      * @return Doesn't return anything on Hazard tiles (0).
      */
     @Override
-    public int getInitNbRubies() {
+    public int getInitNbGems() {
         return 0;
     }
 
@@ -73,8 +75,8 @@ public class Hazard implements Tile {
      * @return Doesn't return anything on Hazard tiles (0).
      */
     @Override
-    public int getRubies() {
-        return 0;
+    public List<Gem> getGems() {
+        return new ArrayList<Gem>();
     }
 
     /**
@@ -92,6 +94,17 @@ public class Hazard implements Tile {
     @Override
     public void restore() {
 
+    }
+
+    /**
+     * Returns true if the relic can be taken by the explorer.
+     *
+     * @param explorers The explorers exploring the relic.
+     * @return True if the explorer is alone and leaving.
+     */
+    @Override
+    public boolean canBeTaken(List<Explorer> explorers) {
+        return false;
     }
 
     /**

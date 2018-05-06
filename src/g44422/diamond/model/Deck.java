@@ -34,6 +34,9 @@ public class Deck {
                 tiles.add(new Hazard(hazard));
             }
         }
+        for(int i=0;i<5;i++) {
+            tiles.add(new Relic());
+        }
     }
 
     /**

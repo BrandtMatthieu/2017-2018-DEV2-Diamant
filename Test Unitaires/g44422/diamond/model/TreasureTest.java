@@ -12,8 +12,8 @@ public class TreasureTest {
 	@Test
 	public void contructorWithoutAttribut() {
 		Treasure treasure = new Treasure();
-		int initNbRubies = treasure.getInitNbRubies();
-		int rubies = treasure.getRubies();
+		int initNbRubies = treasure.getInitNbGems();
+		int rubies = treasure.getGems().size();
 		boolean rubiesEqualsInitNbRubies = rubies == initNbRubies;
 		boolean inBoundaries = (1 <= rubies && rubies <= 15);
 
@@ -23,8 +23,8 @@ public class TreasureTest {
 	@Test
 	public void contructorWithAttribut() {
 		Treasure treasure = new Treasure(42);
-		int initNbRubies = treasure.getInitNbRubies();
-		int rubies = treasure.getRubies();
+		int initNbRubies = treasure.getInitNbGems();
+		int rubies = treasure.getGems().size();
 
 		assertTrue(initNbRubies == rubies && rubies == 42);
 	}
@@ -40,7 +40,7 @@ public class TreasureTest {
 		Explorer e1 = new Explorer("e1");
 		Treasure treasure = new Treasure(4);
 		treasure.explore(Arrays.asList(e1));
-		assertEquals(0, treasure.getRubies());
+		assertEquals(0, treasure.getGems().size());
 	}
 
 	@Test
@@ -49,6 +49,6 @@ public class TreasureTest {
 		Explorer e2 = new Explorer("e2");
 		Treasure treasure = new Treasure(3);
 		treasure.explore(Arrays.asList(e1, e2));
-		assertEquals(1, treasure.getRubies());
+		assertEquals(1, treasure.getGems().size());
 	}
 }

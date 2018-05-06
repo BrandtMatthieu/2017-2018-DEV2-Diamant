@@ -17,13 +17,13 @@ public class TileTest {
 	@Test
 	public void tileHasRubies() {
 		Tile tile = new Treasure();
-		assertTrue(tile.getRubies() > 0);
+		assertTrue(tile.getGems().size() > 0);
 	}
 
 	@Test
 	public void tileHasRubiesIsNumber() {
 		Tile tile = new Treasure();
-		assertEquals(tile.getInitNbRubies(), tile.getRubies());
+		assertEquals(tile.getInitNbGems(), tile.getGems().size());
 	}
 
 	@Test
@@ -32,6 +32,6 @@ public class TileTest {
 		Explorer explorer = new Explorer("44422");
 		treasure.explore(Arrays.asList(explorer));
 		treasure.restore();
-		assertEquals(treasure.getInitNbRubies(), treasure.getRubies());
+		assertEquals(treasure.getInitNbGems(), treasure.getGems().size());
 	}
 }
