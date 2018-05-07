@@ -16,6 +16,8 @@ public class Explorer {
 
     private State state;
 
+    private Chest chest;
+
     /**
      * Creates a new explorer.
      *
@@ -25,7 +27,7 @@ public class Explorer {
         this.pseudonym = pseudonym;
         this.bag = new Bag();
         this.state = State.EXPLORING;
-        //this.state = State.CAMPING;
+        this.chest = new Chest();
     }
 
     /**
@@ -102,17 +104,11 @@ public class Explorer {
     }
 
     /**
-     * Makes the explorer leav the cave.
-     */
-    public void takeDecisionToLeave() {
-        this.state = State.LEAVING;
-    }
-
-    /**
      * Makes the explorers reach the camp and set the as camping.
      */
     public void reachCamp() {
         this.state = State.CAMPING;
+        this.chest.saveBag(this.bag);
     }
 
     /**
@@ -129,4 +125,11 @@ public class Explorer {
     public void startExploration() {
         this.state = State.EXPLORING;
     }
+
+	/**
+	 * Makes the explorer leav the cave.
+	 */
+	public void takeDecisionToLeave() {
+		this.state = State.LEAVING;
+	}
 }

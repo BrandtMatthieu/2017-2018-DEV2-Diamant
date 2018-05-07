@@ -12,7 +12,7 @@ import java.util.Objects;
  */
 public class Bag {
 
-    private List<Gem> gems;
+    protected List<Gem> gems;
 
     /**
      * Creates a new empty bag for the player.
