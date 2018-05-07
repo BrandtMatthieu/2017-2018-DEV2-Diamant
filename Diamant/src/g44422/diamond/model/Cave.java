@@ -28,7 +28,8 @@ public class Cave {
     /**
      * Creates a new cave just to get the tiles from this cave.
      *
-     * @param i A parameter just to create another different constructor to have the tiles with the cave.
+     * @param i A parameter just to create another different constructor to have
+     * the tiles with the cave.
      */
     public Cave(int i) {
         nbExploredEntrance = 0;
@@ -99,7 +100,8 @@ public class Cave {
     }
 
     /**
-     * Locks the entry of the current cave entrance and increments the amount of explored entrances.
+     * Locks the entry of the current cave entrance and increments the amount of
+     * explored entrances.
      */
     public void lockOutCurrentEntrance() {
         this.currentEntrance.lockOut();
@@ -110,7 +112,7 @@ public class Cave {
      * Opens a new entrance of the cave
      *
      * @throws GameException If the previous entrance is still not closed or if
-     *                       5 entrances have already been opened.
+     * 5 entrances have already been opened.
      */
     public void openNewEntrance() {
         if (currentEntrance != null && ((!hasNewEntranceToExplore()) || (!currentEntrance.isLockedOut()))) {

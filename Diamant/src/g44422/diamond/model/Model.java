@@ -9,17 +9,19 @@ import java.util.List;
  * @see <a href="https://en.wikipedia.org/wiki/Facade_pattern">
  * Facade pattern
  * </a>
- * @see <a href="https://fr.wikipedia.org/wiki/Fa%C3%A7ade_(patron_de_conception)">
+ * @see
+ * <a href="https://fr.wikipedia.org/wiki/Fa%C3%A7ade_(patron_de_conception)">
  * Façade (patron de conception)
  * </a>
  */
 public interface Model {
 
     /**
-     * This methode can be used to add new player (explorer) in the game.
+     * This method can be used to add new player (explorer) in the game.
      *
      * @param explorer the explorer to add.
-     * @throws GameException Thrown if it isn't possible to add any new explorer to the game.
+     * @throws GameException Thrown if it isn't possible to add any new explorer
+     * to the game.
      */
     void addExplorer(Explorer explorer);
 
@@ -50,7 +52,8 @@ public interface Model {
     List<Explorer> getExploringExplorers();
 
     /**
-     * Returns a list with the winner(s) of the game, the players with the most rubies.
+     * Returns a list with the winner(s) of the game, the players with the most
+     * rubies.
      *
      * @return The winner or winner of the game.
      */
@@ -86,7 +89,8 @@ public interface Model {
     boolean isItPossibleToAddExplorer();
 
     /**
-     * Tells if the game is finished by checking the current cave entrance and if there canb be new entrances.
+     * Tells if the game is finished by checking the current cave entrance and
+     * if there can be new entrances.
      *
      * @return True if the game is over.
      */
@@ -105,15 +109,16 @@ public interface Model {
     void makeExplorersLeave();
 
     /**
-     * Make all exploring explorers move forward in the cave.
-     * The explorers share what they found.
+     * Make all exploring explorers move forward in the cave. The explorers
+     * share what they found.
      */
     void moveForward();
 
     /**
      * Checks if there are enough explorers before the game starts.
      *
-     * @throws GameException Exception thrown if the amount of players is incorrect.
+     * @throws GameException Exception thrown if the amount of players is
+     * incorrect.
      */
     void start();
 

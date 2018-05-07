@@ -18,7 +18,7 @@ public class Treasure implements Tile {
     /**
      * Creates a new treasure tile with a defined number.
      *
-     * @param rubies The number of rubies on the newly-genereated tile.
+     * @param rubies The number of rubies on the newly-generated tile.
      */
     public Treasure(int rubies) {
         gems = new ArrayList<Gem>();
@@ -50,7 +50,7 @@ public class Treasure implements Tile {
     }
 
     /**
-     * Renvoit The amount of rubies on the tile when it has been created.
+     * returns the amount of rubies on the tile when it has been created.
      *
      * @return The amount of rubies that stood on the tile when it was created.
      */
@@ -58,7 +58,6 @@ public class Treasure implements Tile {
     public int getInitNbGems() {
         return this.initNbGems;
     }
-
 
     /**
      * Makes the explorers explore the tile and share the rubies.
@@ -70,7 +69,7 @@ public class Treasure implements Tile {
         if (!explorers.isEmpty()) {
             int rubiesToShare = Math.floorDiv(this.gems.size(), explorers.size());
             explorers.forEach((explorer) -> {
-                for(int i=0;i<rubiesToShare;i++) {
+                for (int i = 0; i < rubiesToShare; i++) {
                     explorer.addToBag(Gem.RUBY);
                 }
             });
@@ -81,9 +80,10 @@ public class Treasure implements Tile {
     }
 
     /**
-     * Doesn't do anything for the Treasure class. Only valid for the Hazard class.
+     * Doesn't do anything for the Treasure class. Only valid for the Hazard
+     * class.
      *
-     * @return Retruns null.
+     * @return Returns null.
      */
     public HazardType getType() {
         return null;
@@ -111,9 +111,13 @@ public class Treasure implements Tile {
         return false;
     }
 
+    /**
+     * transfers the gems from one tile to another.
+     * @param o The treasure where we pick the gems from.
+     */
     @Override
     public void transferGemsFrom(Treasure o) {
-        for(Gem gem : o.getGems()) {
+        for (Gem gem : o.getGems()) {
             this.gems.add(gem);
         }
         o.gems.clear();

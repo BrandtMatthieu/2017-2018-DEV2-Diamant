@@ -15,7 +15,8 @@ public class GameException extends RuntimeException {
     }
 
     /**
-     * Constructs an instance of GameException with the specified detail message.
+     * Constructs an instance of GameException with the specified detail
+     * message.
      *
      * @param msg The detail message.
      */

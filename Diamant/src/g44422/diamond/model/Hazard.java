@@ -51,7 +51,7 @@ public class Hazard implements Tile {
     }
 
     /**
-     * Doesn't do anyhting on Hazard tiles.
+     * Doesn't do anything on Hazard tiles.
      *
      * @return Doesn't return anything on Hazard tiles (0).
      */
@@ -61,7 +61,7 @@ public class Hazard implements Tile {
     }
 
     /**
-     * Doesn't do anyhting on Hazard tiles.
+     * Doesn't do anything on Hazard tiles.
      *
      * @return Doesn't return anything on Hazard tiles (0).
      */
@@ -70,7 +70,7 @@ public class Hazard implements Tile {
     }
 
     /**
-     * Doesn't do anyhting on Hazard tiles.
+     * Doesn't do anything on Hazard tiles.
      *
      * @return Doesn't return anything on Hazard tiles (0).
      */
@@ -89,7 +89,7 @@ public class Hazard implements Tile {
     }
 
     /**
-     * Doesn't do anyhting on Hazard tiles.
+     * Doesn't do anything on Hazard tiles.
      */
     @Override
     public void restore() {
@@ -108,7 +108,7 @@ public class Hazard implements Tile {
     }
 
     /**
-     * Transfert the rubies left from one tile to another.
+     * Transfers the rubies left from one tile to another.
      *
      * @param o The treasure to transfer from
      */

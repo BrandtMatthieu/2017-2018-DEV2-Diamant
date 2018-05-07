@@ -11,10 +11,11 @@ import g44422.diamond.view.View;
  * @author 44422
  */
 public class Main {
-	public static void main(String args[]) {
-		Model game = new Game();
-		View view = new View(game);
-		Controller controller = new Controller(game, view);
-		controller.startGame();
-	}
+
+    public static void main(String args[]) {
+        Model game = new Game();
+        View view = new View(game);
+        Controller controller = new Controller(game, view);
+        controller.startGame();
+    }
 }

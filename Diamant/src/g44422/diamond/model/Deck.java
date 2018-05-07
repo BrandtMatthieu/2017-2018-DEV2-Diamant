@@ -34,7 +34,7 @@ public class Deck {
                 tiles.add(new Hazard(hazard));
             }
         }
-        for(int i=0;i<5;i++) {
+        for (int i = 0; i < 5; i++) {
             tiles.add(new Relic());
         }
     }
@@ -42,7 +42,7 @@ public class Deck {
     /**
      * Returns one of the tiles in the deck and removes it.
      *
-     * @return One randome tile of the deck.
+     * @return One random tile of the deck.
      */
     public Tile getTile() {
         Tile toReturn = tiles.get((int) (Math.random() * tiles.size()));

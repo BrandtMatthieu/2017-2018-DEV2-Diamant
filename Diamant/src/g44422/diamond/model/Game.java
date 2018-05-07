@@ -51,7 +51,7 @@ public class Game implements Model {
      *
      * @param explorer The explorer to add to the game.
      * @throws GameException Thrown if it isn't possible to add any new explorer
-     *                       to the game.
+     * to the game.
      */
     @Override
     public void addExplorer(Explorer explorer) {
@@ -83,7 +83,7 @@ public class Game implements Model {
     }
 
     /**
-     * Makes a list of all explorers curerntly exploring.
+     * Makes a list of all explorers currently exploring.
      *
      * @return All the exploring explorers.
      */
@@ -98,7 +98,8 @@ public class Game implements Model {
     }
 
     /**
-     * Returns a list with the winner(s) of the game, the players with the most rubies.
+     * Returns a list with the winner(s) of the game, the players with the most
+     * rubies.
      *
      * @return The winner or winner of the game.
      */
@@ -125,7 +126,8 @@ public class Game implements Model {
      * Makes the wishing explorers leave the cave.
      *
      * @param explorer The explorer who want to leave the cave.
-     * @throws GameException Exception thrown if the explorer isn't in the list with the exploring explorers.
+     * @throws GameException Exception thrown if the explorer isn't in the list
+     * with the exploring explorers.
      */
     @Override
     public void handleExplorerDecisionToLeave(Explorer explorer) {
@@ -137,9 +139,10 @@ public class Game implements Model {
     }
 
     /**
-     * Checks if the exporers have left the cave entrance because it's unsafe.
+     * Checks if the explorers have left the cave entrance because it's unsafe.
      *
-     * @return Returns true if the exporers have left the cave entrance because it's unsafe.
+     * @return Returns true if the explorers have left the cave entrance because
+     * it's unsafe.
      */
     @Override
     public boolean isExplorationPhaseAborted() {
@@ -168,7 +171,7 @@ public class Game implements Model {
 
     /**
      * Tells if the game is finished by checking the current cave entrance and
-     * if there canb be new entrances.
+     * if there can be new entrances.
      *
      * @return True if the game is over.
      */
@@ -193,7 +196,8 @@ public class Game implements Model {
      */
     @Override
     public void makeExplorersLeave() {
-    	this.getCave().getCurrentEntrance().makeLastTileExplored();
+        /* TODO */
+        //this.getCave().getCurrentEntrance().makeLastTileExplored();
         List<Explorer> leavingExplorers = new ArrayList<Explorer>();
         explorers.stream().filter((explorer) -> (explorer.getState() == LEAVING)).forEachOrdered((explorer) -> {
             leavingExplorers.add(explorer);
@@ -212,7 +216,8 @@ public class Game implements Model {
     /**
      * Checks if there are enough explorers.
      *
-     * @throws GameException Exception thrown if the amount of players is incorrect.
+     * @throws GameException Exception thrown if the amount of players is
+     * incorrect.
      */
     @Override
     public void start() {

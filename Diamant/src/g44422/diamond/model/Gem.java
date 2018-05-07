@@ -8,7 +8,6 @@ package g44422.diamond.model;
  */
 public enum Gem {
     DIAMOND(5),
-
     RUBY(1);
 
     final int value;

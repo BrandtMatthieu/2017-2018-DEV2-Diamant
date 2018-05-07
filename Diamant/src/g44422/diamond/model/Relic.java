@@ -5,19 +5,20 @@ import java.util.List;
 
 public class Relic implements Tile {
 
-	private int valueInDiamonds = 1;
-
-	/**
-	 * Returns the value in diamonds of the Relic.
-	 *
-	 * @return The value in diamonds of the relic.
-	 */
-	public int getValueInDiamonds() {
-		return valueInDiamonds;
-	}
+    private int valueInDiamonds = 1;
 
     /**
-     * Returns true if the relic can be taken by one explorer if he is alone and leaving the cave.
+     * Returns the value in diamonds of the Relic.
+     *
+     * @return The value in diamonds of the relic.
+     */
+    public int getValueInDiamonds() {
+        return valueInDiamonds;
+    }
+
+    /**
+     * Returns true if the relic can be taken by one explorer if he is alone and
+     * leaving the cave.
      *
      * @param explorers All the explorers exploring the relic.
      * @return True if the relic can be taken by the explorer.
@@ -37,17 +38,17 @@ public class Relic implements Tile {
 
     }
 
-	/**
-	 * Doesn't do anything for the Relic class.
-	 *
-	 * @param explorers The exploring explorers.
-	 */
-	@Override
-	public void explore(List<Explorer> explorers) {
+    /**
+     * Doesn't do anything for the Relic class.
+     *
+     * @param explorers The exploring explorers.
+     */
+    @Override
+    public void explore(List<Explorer> explorers) {
 
-	}
+    }
 
-	/**
+    /**
      * Returns the amount of rubies on the tile when it has been created.
      *
      * @return The amount of rubies that stood on the tile when it was created.
@@ -77,14 +78,19 @@ public class Relic implements Tile {
     /**
      * Doesn't do anything on the relic.
      */
-    public void restore(){}
+    public void restore() {
+    }
 
+    /**
+     * Converts the value of a relic into a finite amount of diamonds and rubies.
+     * @param nbTakenRelics the number of already taken relics.
+     */
     public void convertGemValue(int nbTakenRelics) {
-        if(nbTakenRelics>=3) {
+        if (nbTakenRelics >= 3) {
             valueInDiamonds = 2;
-        } else if(nbTakenRelics < 3) {
-        	valueInDiamonds = 1;
-		}
+        } else if (nbTakenRelics < 3) {
+            valueInDiamonds = 1;
+        }
     }
 
 }

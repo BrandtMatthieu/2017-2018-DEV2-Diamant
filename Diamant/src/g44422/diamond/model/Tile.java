@@ -3,10 +3,11 @@ package g44422.diamond.model;
 import java.util.List;
 
 public interface Tile {
+
     void explore(List<Explorer> explorers);
 
     /**
-     * Renvoit The amount of rubies on the tile when it has been created.
+     * returns the amount of rubies on the tile when it has been created.
      *
      * @return The amount of rubies that stood on the tile when it was created.
      */
@@ -31,7 +32,6 @@ public interface Tile {
      */
     void restore();
 
-
     /**
      * Returns true if the relic can be taken by the explorer.
      *
@@ -41,9 +41,9 @@ public interface Tile {
     boolean canBeTaken(List<Explorer> explorers);
 
     /**
-     * Transfert the rubies left from one tile to another.
-	 *
+     * Transfers the rubies left from one tile to another.
+     *
      * @param o The treasure to transfer from
      */
-	void transferGemsFrom(Treasure o);
+    void transferGemsFrom(Treasure o);
 }

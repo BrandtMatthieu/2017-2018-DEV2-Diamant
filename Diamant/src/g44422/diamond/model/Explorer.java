@@ -40,9 +40,9 @@ public class Explorer {
     }
 
     /**
-     * Returns the amount of rubbies in the explorer's bag.
+     * Returns the amount of rubies in the explorer's bag.
      *
-     * @return The amount of rubbies in the explorer's bag.
+     * @return The amount of rubies in the explorer's bag.
      */
     public Bag getBag() {
         return this.bag;
@@ -58,9 +58,9 @@ public class Explorer {
     }
 
     /**
-     * Adds the amount of rubbies in the explorer's bag.
+     * Adds the amount of rubies in the explorer's bag.
      *
-     * @param gem The amound of rubies to add in the explorer's bag.
+     * @param gem The amount of rubies to add in the explorer's bag.
      */
     public void addToBag(Gem gem) {
         this.bag.addGem(gem);
@@ -69,8 +69,9 @@ public class Explorer {
     /**
      * Checks if an explorer is equals to itself.
      *
-     * @param o An empty obeject.
-     * @return True if the explorer isn't null, is an explorer and if it's equals to itself.
+     * @param o An empty object.
+     * @return True if the explorer isn't null, is an explorer and if it's
+     * equals to itself.
      */
     @Override
     public boolean equals(Object o) {
@@ -90,7 +91,7 @@ public class Explorer {
      * @return The amount of rubies a player has in it's bag.
      */
     public int getFortune() {
-        return this.getBag().getValue();
+        return this.chest.getValue();
     }
 
     /**
@@ -126,10 +127,10 @@ public class Explorer {
         this.state = State.EXPLORING;
     }
 
-	/**
-	 * Makes the explorer leav the cave.
-	 */
-	public void takeDecisionToLeave() {
-		this.state = State.LEAVING;
-	}
+    /**
+     * Makes the explorer leave the cave.
+     */
+    public void takeDecisionToLeave() {
+        this.state = State.LEAVING;
+    }
 }
