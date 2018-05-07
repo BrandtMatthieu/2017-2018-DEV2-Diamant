@@ -86,6 +86,8 @@ public class ExplorerTest {
 		assertEquals(explorer.getBag().getValue(), explorer.getFortune());
 	}
 
+        /*
+        Test can't work anymore since bag and fortune are two different things.
 	@Test
 	public void getFortuneEqualsGetBagGetNbRubiesWithFullBag() {
 		Explorer explorer = new Explorer("44422");
@@ -93,5 +95,24 @@ public class ExplorerTest {
 			explorer.addToBag(Gem.RUBY);
 		}
 		assertEquals(explorer.getBag().getValue(), explorer.getFortune());
+	}
+        */
+        
+        public void fortuneEqualsToBagBeforesaving() {
+		Explorer explorer = new Explorer("44422");
+		for(int i=0;i<42;i++) {
+			explorer.addToBag(Gem.RUBY);
+		}
+                explorer.chest.saveBag(explorer.getBag());
+		assertEquals(explorer.getFortune(), 42);
+	}
+        
+        public void bagEmptyAfterSave() {
+		Explorer explorer = new Explorer("44422");
+		for(int i=0;i<42;i++) {
+			explorer.addToBag(Gem.RUBY);
+		}
+                explorer.chest.saveBag(explorer.getBag());
+		assertEquals(explorer.getBag().getValue(), 0);
 	}
 }

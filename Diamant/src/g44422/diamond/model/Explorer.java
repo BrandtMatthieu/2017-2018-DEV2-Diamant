@@ -16,7 +16,7 @@ public class Explorer {
 
     private State state;
 
-    private Chest chest;
+    Chest chest;
 
     /**
      * Creates a new explorer.
