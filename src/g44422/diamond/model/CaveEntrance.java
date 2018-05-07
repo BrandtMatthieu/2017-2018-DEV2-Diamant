@@ -21,6 +21,10 @@ public class CaveEntrance extends Cave {
 
     private Cave cave;
 
+    private boolean treasureFound;
+
+    private Treasure firstTreasureTile;
+
     /**
      * Creates a new cave and sets its default variables.
      */
@@ -28,6 +32,7 @@ public class CaveEntrance extends Cave {
         lockedOut = false;
         unsafe = false;
         path.clear();
+        treasureFound = false;
     }
 
     /**
@@ -111,7 +116,17 @@ public class CaveEntrance extends Cave {
                     explorer.runAway();
                 }
             }
-        }
+        } else if (lastDiscoveredTile instanceof Treasure) {
+        	for (Tile tile : path) {
+        		if(tile instanceof Treasure) {
+					treasureFound = true;
+					break;
+				}
+			}
+			if(!treasureFound) {
+				firstTreasureTile = (Treasure) lastDiscoveredTile;
+			}
+		}
         this.path.add(lastDiscoveredTile);
         lastDiscoveredTile.explore(explorers);
     }
@@ -136,6 +151,12 @@ public class CaveEntrance extends Cave {
     public void lockOut() {
         this.lockedOut = true;
     }
+
+    public void makeLastTileExplored() {
+    	if(path.get(path.size()-1) instanceof Treasure) {
+			firstTreasureTile.transferGemsFrom((Treasure) this.getPath().get(path.size()-1));
+		}
+	}
 
     /**
      * Makes the explorers return to the camp.

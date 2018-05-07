@@ -14,12 +14,15 @@ public class Cave {
 
     private Deck deck;
 
+    private int nbTakenRelics;
+
     /**
      * Creates a new cave, a new entrance and a new deck.
      */
     public Cave() {
         nbExploredEntrance = 0;
         deck = new Deck();
+        nbTakenRelics = 0;
     }
 
     /**
@@ -31,6 +34,7 @@ public class Cave {
         nbExploredEntrance = 0;
         deck = new Deck();
         currentEntrance = new CaveEntrance(this);
+        nbTakenRelics = 0;
     }
 
     /**
@@ -61,12 +65,28 @@ public class Cave {
     }
 
     /**
+     * Tells how much relics have already been taken.
+     *
+     * @return The amount of relics already taken by the other explorers.
+     */
+    public int getNbTakenRelics() {
+        return nbTakenRelics;
+    }
+
+    /**
      * Returns true if less than 5 cave entrances have been explored.
      *
      * @return true if less than 5 cave entrances have been explored.
      */
     public boolean hasNewEntranceToExplore() {
         return nbExploredEntrance < 5;
+    }
+
+    /**
+     * Increments the number of taken relics.
+     */
+    public void incrementNbTakenRelics() {
+        nbTakenRelics++;
     }
 
     /**

@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Relic implements Tile {
 
+    private int valueInDiamonds = 1;
+
     /**
      * Returns true if the relic can be taken by one explorer if he is alone and leaving the cave.
      *
@@ -16,7 +18,14 @@ public class Relic implements Tile {
         return explorers.size() == 1 && explorers.get(0).getState() == State.LEAVING;
     }
 
-    public void explore(List <Explorer> explorers) {}
+    @Override
+    public void explore(List <Explorer> explorers) {
+        if (!explorers.isEmpty()&&this.canBeTaken(explorers)) {
+            for(int i=0;i<this.valueInDiamonds;i++) {
+                explorers.get(0).addToBag(Gem.DIAMOND);
+            }
+        }
+    }
 
     /**
      * Renvoit The amount of rubies on the tile when it has been created.
@@ -49,5 +58,11 @@ public class Relic implements Tile {
      * Doesn't do anything on the relic.
      */
     public void restore(){}
+
+    public void convertGemValue(int nbTakenRelics) {
+        if(nbTakenRelics>=3) {
+            valueInDiamonds = 2;
+        }
+    }
 
 }

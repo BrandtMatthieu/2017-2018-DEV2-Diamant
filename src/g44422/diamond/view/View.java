@@ -3,6 +3,7 @@ package g44422.diamond.view;
 import g44422.diamond.model.Explorer;
 import g44422.diamond.model.Hazard;
 import g44422.diamond.model.Model;
+import g44422.diamond.model.Relic;
 
 import java.util.Scanner;
 
@@ -64,6 +65,24 @@ public class View {
 	public boolean askExplorerChoiceToContinue(Explorer explorer) {
 		System.out.println("\n" + explorer.getPseudonym() + ", voulez-vous quitter la grotte? [ OUI / NON ]");
 		return choice();
+	}
+
+	public void introMessage() {
+		System.out.println(
+				" _______   __                                                __     \n" +
+				"|       \\ |  \\                                              |  \\    \n" +
+				"| $$$$$$$\\ \\$$  ______   ______ ____    ______   _______   _| $$_   \n" +
+				"| $$  | $$|  \\ |      \\ |      \\    \\  |      \\ |       \\ |   $$ \\  \n" +
+				"| $$  | $$| $$  \\$$$$$$\\| $$$$$$\\$$$$\\  \\$$$$$$\\| $$$$$$$\\ \\$$$$$$  \n" +
+				"| $$  | $$| $$ /      $$| $$ | $$ | $$ /      $$| $$  | $$  | $$ __ \n" +
+				"| $$__/ $$| $$|  $$$$$$$| $$ | $$ | $$|  $$$$$$$| $$  | $$  | $$|  \\\n" +
+				"| $$    $$| $$ \\$$    $$| $$ | $$ | $$ \\$$    $$| $$  | $$   \\$$  $$\n" +
+				" \\$$$$$$$  \\$$  \\$$$$$$$ \\$$  \\$$  \\$$  \\$$$$$$$ \\$$   \\$$    \\$$$$ \n" +
+				"                                                                    ");
+		System.out.println("Bienvenue dans la grotte de Tacora, réputée pour ses diamants...\n" +
+				"mais aussi pour ses pièges redoutables !\n" +
+				"Aventurez-vous dans les profondeurs de la grotte et décidez,\n" +
+				"pas après pas, de continuer votre chemin ou de rentrer prudemment au campement pour mettre vos trésors à l’abri.\n");
 	}
 
 	/**
@@ -169,6 +188,8 @@ public class View {
 			for (int k = 0; k < ((13 - game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString().length() / 2) - game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString().length()); k++) {
 				System.out.print(" ");
 			}
+		} else if(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size()-1) instanceof Relic) {
+			System.out.print("   RELIQUE   ");
 		} else {
 			System.out.print("   ");
 			if (String.valueOf(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getInitNbGems()).length() == 1) {

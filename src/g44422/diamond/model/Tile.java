@@ -39,4 +39,11 @@ public interface Tile {
      * @return True if the explorer is alone and leaving.
      */
     boolean canBeTaken(List<Explorer> explorers);
+
+    /**
+     * Transfert the rubies left from one tile to another.
+	 *
+     * @param o The treasure to transfer from
+     */
+	void transferGemsFrom(Treasure o);
 }

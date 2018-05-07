@@ -111,4 +111,11 @@ public class Treasure implements Tile {
         return false;
     }
 
+    @Override
+    public void transferGemsFrom(Treasure o) {
+        for(Gem gem : o.getGems()) {
+            this.gems.add(gem);
+        }
+        o.gems.clear();
+    }
 }

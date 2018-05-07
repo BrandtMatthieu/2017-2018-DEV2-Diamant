@@ -33,6 +33,7 @@ public class Controller {
 	 * Begins the game.
 	 */
 	public void startGame() {
+		view.introMessage();
 		while (!game.isThereEnoughExplorer()) {
 			game.addExplorer(view.askExplorer());
 		}

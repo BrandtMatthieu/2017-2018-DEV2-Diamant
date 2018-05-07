@@ -193,8 +193,8 @@ public class Game implements Model {
      */
     @Override
     public void makeExplorersLeave() {
-        List<Explorer> leavingExplorers;
-        leavingExplorers = new ArrayList<>();
+    	this.getCave().getCurrentEntrance().makeLastTileExplored();
+        List<Explorer> leavingExplorers = new ArrayList<Explorer>();
         explorers.stream().filter((explorer) -> (explorer.getState() == LEAVING)).forEachOrdered((explorer) -> {
             leavingExplorers.add(explorer);
         });
