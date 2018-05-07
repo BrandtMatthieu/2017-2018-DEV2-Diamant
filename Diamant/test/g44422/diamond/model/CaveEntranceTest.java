@@ -69,4 +69,16 @@ public class CaveEntranceTest {
 		CaveEntrance caveEntrance = new CaveEntrance(cave);
 		assertEquals(cave, caveEntrance.getCave());
 	}
+        
+        /*
+        @Test
+        public void transfert() {
+            Cave cave = new Cave();
+            CaveEntrance caveEntrance = new CaveEntrance();
+            caveEntrance.addTileToPath(new Treasure(0));
+            caveEntrance.addTileToPath(new Treasure(42));
+            caveEntrance.getPath().get(0).transferGemsFrom((Treasure)caveEntrance.getPath().get(1));
+            assertEquals(caveEntrance.getPath().get(0).getGems().size(), 42);
+        }
+        */
 }

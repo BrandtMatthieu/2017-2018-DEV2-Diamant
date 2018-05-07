@@ -177,7 +177,7 @@ public class View {
                 for (int k = 0; k < ((13 - Math.floorDiv((13 - game.getCave().getCurrentEntrance().getPath().get(i).getType().toString().length()), 2)) - game.getCave().getCurrentEntrance().getPath().get(i).getType().toString().length()); k++) {
                     System.out.print(" "); // Print spaces.
                 }
-            } else if (game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1) instanceof Relic) {
+            } else if (game.getCave().getCurrentEntrance().getPath().get(i) instanceof Relic) {
                 System.out.print("   RELIQUE   ");
             } else { // If it is a treasure
                 System.out.print("   "); // Print spaces.
