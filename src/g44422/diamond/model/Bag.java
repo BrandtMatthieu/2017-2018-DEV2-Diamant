@@ -12,70 +12,70 @@ import java.util.Objects;
  */
 public class Bag {
 
-    protected List<Gem> gems;
+	protected List<Gem> gems;
 
-    /**
-     * Creates a new empty bag for the player.
-     */
-    public Bag() {
-        this.gems = new ArrayList<Gem>();
-    }
+	/**
+	 * Creates a new empty bag for the player.
+	 */
+	public Bag() {
+		this.gems = new ArrayList<Gem>();
+	}
 
-    /**
-     * Returns the amount of rubbies in the explorer's bag.
-     *
-     * @return The amound of rubbies the explorer have.
-     */
-    public int getValue() {
-        int sum = 0;
-        for (Gem gem : gems) {
-            sum = sum + gem.getValue();
-        }
-        return sum;
-    }
+	/**
+	 * Returns the amount of rubies in the explorer's bag.
+	 *
+	 * @return The amount of rubies the explorer have.
+	 */
+	public int getValue() {
+		int sum = 0;
+		for (Gem gem : gems) {
+			sum = sum + gem.getValue();
+		}
+		return sum;
+	}
 
-    /**
-     * Adds the specifies amound of rubbies to a player's bag.
-     *
-     * @param gem The amount of rubbies to add.
-     */
-    public void addGem(Gem gem) {
-        this.gems.add(gem);
-    }
+	/**
+	 * Adds the specified gem to the player's bag.
+	 *
+	 * @param gem The gem to add.
+	 */
+	public void addGem(Gem gem) {
+		this.gems.add(gem);
+	}
 
-    /**
-     * Checks if a bag is a bag.
-     *
-     * @param o An object.
-     * @return True if the bag isn't empty, is an object and if is equals to itself.
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Bag bag = (Bag) o;
-        return this.getValue() == bag.getValue();
-    }
+	/**
+	 * Checks if two bags are equals.
+	 *
+	 * @param o An object.
+	 * @return True if the bag isn't empty, is an object and if is equals to itself.
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+		Bag bag = (Bag) o;
+		return this.getValue() == bag.getValue();
+	}
 
-    /**
-     * Returns the hashCode of the amount of rubies.
-     *
-     * @return the hashCode of the amount of rubies.
-     */
-    @Override
-    public int hashCode() {
-        return Objects.hash(gems);
-    }
+	/**
+	 * Returns the hashCode of the amount of gems.
+	 *
+	 * @return the hashCode of the amount of gems.
+	 */
+	@Override
+	public int hashCode() {
+		return Objects.hash(gems);
+	}
 
-    /**
-     * Resets the player's bag when he falls into a trap.
-     */
-    public void loseContent() {
-        this.gems.clear();
-    }
+	/**
+	 * Resets the player's bag when he falls into a trap.
+	 */
+	public void loseContent() {
+		this.gems.clear();
+	}
 
 }

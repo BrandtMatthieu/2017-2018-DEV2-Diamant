@@ -5,7 +5,16 @@ import java.util.List;
 
 public class Relic implements Tile {
 
-    private int valueInDiamonds = 1;
+	private int valueInDiamonds = 1;
+
+	/**
+	 * Returns the value in diamonds of the Relic.
+	 *
+	 * @return The value in diamonds of the relic.
+	 */
+	public int getValueInDiamonds() {
+		return valueInDiamonds;
+	}
 
     /**
      * Returns true if the relic can be taken by one explorer if he is alone and leaving the cave.
@@ -18,17 +27,28 @@ public class Relic implements Tile {
         return explorers.size() == 1 && explorers.get(0).getState() == State.LEAVING;
     }
 
+    /**
+     * Transfers the rubies left from one tile to another.
+     *
+     * @param o The treasure to transfer from
+     */
     @Override
-    public void explore(List <Explorer> explorers) {
-        if (!explorers.isEmpty()&&this.canBeTaken(explorers)) {
-            for(int i=0;i<this.valueInDiamonds;i++) {
-                explorers.get(0).addToBag(Gem.DIAMOND);
-            }
-        }
+    public void transferGemsFrom(Treasure o) {
+
     }
 
-    /**
-     * Renvoit The amount of rubies on the tile when it has been created.
+	/**
+	 * Doesn't do anything for the Relic class.
+	 *
+	 * @param explorers The exploring explorers.
+	 */
+	@Override
+	public void explore(List<Explorer> explorers) {
+
+	}
+
+	/**
+     * Returns the amount of rubies on the tile when it has been created.
      *
      * @return The amount of rubies that stood on the tile when it was created.
      */
@@ -62,7 +82,9 @@ public class Relic implements Tile {
     public void convertGemValue(int nbTakenRelics) {
         if(nbTakenRelics>=3) {
             valueInDiamonds = 2;
-        }
+        } else if(nbTakenRelics < 3) {
+        	valueInDiamonds = 1;
+		}
     }
 
 }

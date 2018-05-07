@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class containing the differents main methods of the game.
+ * Class containing the different main methods of the game.
  *
  * @author 44422
  * @version 0.1
@@ -16,6 +16,7 @@ import java.util.List;
 public class Controller {
 
 	private Model game;
+
 	private View view;
 
 	/**
@@ -58,9 +59,7 @@ public class Controller {
 							leavingExplorers.add(explorerToAsk);
 						}
 					}
-					leavingExplorers.forEach((leavingExplorer) -> {
-						game.handleExplorerDecisionToLeave(leavingExplorer);
-					});
+					leavingExplorers.forEach((leavingExplorer) -> game.handleExplorerDecisionToLeave(leavingExplorer));
 					game.makeExplorersLeave();
 				}
 			} while (!game.isExplorationPhaseOver());

@@ -17,7 +17,7 @@ public class Cave {
     private int nbTakenRelics;
 
     /**
-     * Creates a new cave, a new entrance and a new deck.
+     * Creates a new cave, a new deck and sets the number of found relics to 0.
      */
     public Cave() {
         nbExploredEntrance = 0;
@@ -28,7 +28,7 @@ public class Cave {
     /**
      * Creates a new cave just to get the tiles from this cave.
      *
-     * @param i A parameter just to create another different contructor to have the tiles with the cave.
+     * @param i A parameter just to create another different constructor to have the tiles with the cave.
      */
     public Cave(int i) {
         nbExploredEntrance = 0;

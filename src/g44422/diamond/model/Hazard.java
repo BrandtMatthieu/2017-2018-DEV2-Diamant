@@ -108,6 +108,16 @@ public class Hazard implements Tile {
     }
 
     /**
+     * Transfert the rubies left from one tile to another.
+     *
+     * @param o The treasure to transfer from
+     */
+    @Override
+    public void transferGemsFrom(Treasure o) {
+
+    }
+
+    /**
      * Return s the type of the tile.
      *
      * @return Returns the type of the Hazard tile.

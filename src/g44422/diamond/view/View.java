@@ -70,19 +70,19 @@ public class View {
 	public void introMessage() {
 		System.out.println(
 				" _______   __                                                __     \n" +
-				"|       \\ |  \\                                              |  \\    \n" +
-				"| $$$$$$$\\ \\$$  ______   ______ ____    ______   _______   _| $$_   \n" +
-				"| $$  | $$|  \\ |      \\ |      \\    \\  |      \\ |       \\ |   $$ \\  \n" +
-				"| $$  | $$| $$  \\$$$$$$\\| $$$$$$\\$$$$\\  \\$$$$$$\\| $$$$$$$\\ \\$$$$$$  \n" +
-				"| $$  | $$| $$ /      $$| $$ | $$ | $$ /      $$| $$  | $$  | $$ __ \n" +
-				"| $$__/ $$| $$|  $$$$$$$| $$ | $$ | $$|  $$$$$$$| $$  | $$  | $$|  \\\n" +
-				"| $$    $$| $$ \\$$    $$| $$ | $$ | $$ \\$$    $$| $$  | $$   \\$$  $$\n" +
-				" \\$$$$$$$  \\$$  \\$$$$$$$ \\$$  \\$$  \\$$  \\$$$$$$$ \\$$   \\$$    \\$$$$ \n" +
-				"                                                                    ");
+						"|       \\ |  \\                                              |  \\    \n" +
+						"| $$$$$$$\\ \\$$  ______   ______ ____    ______   _______   _| $$_   \n" +
+						"| $$  | $$|  \\ |      \\ |      \\    \\  |      \\ |       \\ |   $$ \\  \n" +
+						"| $$  | $$| $$  \\$$$$$$\\| $$$$$$\\$$$$\\  \\$$$$$$\\| $$$$$$$\\ \\$$$$$$  \n" +
+						"| $$  | $$| $$ /      $$| $$ | $$ | $$ /      $$| $$  | $$  | $$ __ \n" +
+						"| $$__/ $$| $$|  $$$$$$$| $$ | $$ | $$|  $$$$$$$| $$  | $$  | $$|  \\\n" +
+						"| $$    $$| $$ \\$$    $$| $$ | $$ | $$ \\$$    $$| $$  | $$   \\$$  $$\n" +
+						" \\$$$$$$$  \\$$  \\$$$$$$$ \\$$  \\$$  \\$$  \\$$$$$$$ \\$$   \\$$    \\$$$$ \n" +
+						"                                                                    ");
 		System.out.println("Bienvenue dans la grotte de Tacora, réputée pour ses diamants...\n" +
 				"mais aussi pour ses pièges redoutables !\n" +
-				"Aventurez-vous dans les profondeurs de la grotte et décidez,\n" +
-				"pas après pas, de continuer votre chemin ou de rentrer prudemment au campement pour mettre vos trésors à l’abri.\n");
+				"Aventurez-vous dans les profondeurs de la grotte et décidez, pas après pas,\n" +
+				"de continuer votre chemin ou de rentrer prudemment au campement pour mettre vos trésors à l’abri.\n");
 	}
 
 	/**
@@ -116,6 +116,8 @@ public class View {
 		System.out.println("\n");
 		if (game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1) instanceof Hazard) {
 			System.out.println("Pas de chance, vous tombez sur une carte \"Danger\". Le danger est de type " + game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString() + ".");
+		} else if (game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1) instanceof Relic) {
+			System.out.println("Vous découvrez une relique d'une valeur de " + (Math.floorDiv(game.getCave().getNbTakenRelics(), 3) + 1) * 5 + " rubis.");
 		} else {
 			System.out.println("Vous découvrez une tuile avec " + game.getCave().getCurrentEntrance().getLastDiscoveredTile().getInitNbGems() + " rubis.");
 		}
@@ -188,7 +190,7 @@ public class View {
 			for (int k = 0; k < ((13 - game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString().length() / 2) - game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1).getType().toString().length()); k++) {
 				System.out.print(" ");
 			}
-		} else if(game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size()-1) instanceof Relic) {
+		} else if (game.getCave().getCurrentEntrance().getPath().get(game.getCave().getCurrentEntrance().getPath().size() - 1) instanceof Relic) {
 			System.out.print("   RELIQUE   ");
 		} else {
 			System.out.print("   ");
